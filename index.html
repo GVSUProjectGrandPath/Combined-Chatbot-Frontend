@@ -11,11 +11,11 @@
  to work at the GUI locally instead of only on LearnWorlds -->
 
 <!-- IMPORTS -->
-	<!-- text symbols/icons using "phosphor". phosphor is being used whenever there is an <i> tag. it will have the class "ph-<something>" -->
-	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"/>
-	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"/>
-	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/bold/style.css"/>
-	<!-- https://icon-sets.iconify.design/ -->
+
+	<!-- Copy SVGs for icons from either:
+        - https://icon-sets.iconify.design/
+        - https://phosphoricons.com/
+    -->
 
 	<!-- script to clean the LLM html formatted response of any harmful things such as a harmful <script> tag -->
 	<script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.4/dist/purify.min.js"></script>
@@ -28,32 +28,33 @@
 <!-- END IMPORTS -->
 
 <!-- unopened-chat -->
-<button id="unopened-chat" class="hidden" onClick = "chatBot()">
+<!-- <button id="unopened-chat" class="hidden" onClick = "chatBot()">
 	<div id="message-symbol" style="width: 44px; height: 32px; background-color: white; border-radius: 8px; padding: 0; margin: 0; display: flex; justify-content: center; align-items: center; gap: 2px;">
       <div class="circle"></div>
       <div class="circle"></div>
       <div class="circle"></div>
   	</div>
     <div id="message-symbol-tail" style="position: absolute; height: 10px; width: 8px; border-bottom-right-radius: 100%; background-color: white; bottom: 20px; left: 25px;"></div>
+</button> -->
+<!-- Diego's Version -->
+<button id="unopened-chat" class="hidden" onClick = "chatBot()">
+	<img src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/fc03ee57461416c10e083865fcc3e6f4.png">
 </button>
+
 <!-- END unopened-chat -->
 
 
 <!-- opened chat -->
 <div id="chat-container" class="hidden">
-	<div id="resize">
-		<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none" /><path fill="currentColor" d="m10.59 12l4-4H11V6h7v7h-2V9.41l-4 4V16h8V4H8v8zM22 2v16H12v4H2V12h4V2zM10 14H4v6h6z" />
-	</svg>
-
-	</div>
+    <div id="resize" class="corner" style="z-index: 10000;">⠿</div>
   	<!-- animal choice --> 
-  	<div id="animal-choice">
+  	<div id="animal-choice" class="hidden">
       	<div id="question-container">
           	<div style="display: flex; flex-direction: row; width: 100%; padding: 0px 10px; align-items: center;">
               <div class="logo">
                   <h1 >FinLit Rep4® Bot</h1>
               </div>
-              <button class="close-chat" onClick ="chatBot()" style="margin-left: auto; padding: auto 5px;"><i class="ph-bold ph-x"></i></button>
+              <button class="close-chat symbol" onClick ="chatBot()" style="margin-left: auto; padding: auto 5px;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 1024 1024"><path d="M0 0h1024v1024H0z" fill="none" /><path fill="currentColor" d="M195.2 195.2a64 64 0 0 1 90.5 0L512 421.5l226.3-226.3a64 64 0 0 1 90.5 90.5L602.5 512l226.3 226.3a64 64 0 0 1-90.5 90.5L512 602.5L285.7 828.8a64 64 0 0 1-90.5-90.5L421.5 512L195.2 285.7a64 64 0 0 1 0-90.5" /></svg></button>
             </div>
       		<h1 id="animal-question">Which Money Mindset Animal are You?</h1>
 			<h2 id="quiz-link">Don't know your Animal? Take the quiz <a href="https://quiz.rep4finlit.org/" target="_blank" style="text-decoration: underline; color: var(--purple-color);">here</a></h2>
@@ -120,77 +121,28 @@
   	<!-- END animal choice -->
  
 	<!-- Chat interface -->
-	<div id="chat-content" class="hidden">
-
-			<!-- tool-menu -->
-      		<div id="tools-menu">
-          	<div id="tools-content">
-				<!-- displays the tool's symbol the user is currently using at the top of the tools menu-->
-          		<div id="current-tool" class="tool">
-                  	<p>Current tool</p>
-                  	<div id="current-tool-symbol" class="symbol"><i class="ph ph-gear" style="text-align: center;"></i></div>
-              		<button id="close-tools" onClick ="tools()"><i class="ph-bold ph-x"></i></button>
-              	</div> 
-              
-              	<!-- tools -->
-                <div id="none" class="tool" onClick="tool=selectTool(this)"><p>No Tool</p>
-                	<div class="symbol" style="background-color: var(--purple-color);">
-                      	<i class="ph ph-gear" style="text-align: center;"></i>
-                  	</div>
-              	</div>
-
-              	<div id="build-a-budget" class="tool" onClick="tool=selectTool(this)"><p>Build a Budget</p>
-                	<div class="symbol" style="background-color: var(--blue-color);">
-                      	<i class="ph ph-article" style="text-align: center;"></i>
-                  	</div>
-              	</div>
-
-              	<div id="plan-for-a-purchase" class="tool" onClick="tool=selectTool(this)"><p>Plan for a Purchase</p>
-                	<div class="symbol" style="background-color: var(--salmon-color);">
-                      	<i class="ph ph-shopping-cart-simple" style="text-align: center;"></i>
-                  	</div>
-              	</div>
-
-              	<div id="check-credit-score" class="tool" onClick="tool=selectTool(this)"><p>Check Credit Score</p>
-                	<div class="symbol" style="background-color: var(--teal-color);">
-                      	<i class="ph ph-credit-card" style="text-align: center;"></i>
-                  	</div>
-              	</div>
-
-              	<div id="calculate-loan" class="tool" onClick="tool=selectTool(this)"><p>Calculate Loan</p>
-                	<div class="symbol" style="background-color: var(--brown-color);">
-                      	<i class="ph ph-calculator" style="text-align: center;"></i>
-                  	</div>
-              	</div>
-
-              	<div id="manage-debt" class="tool" onClick="tool=selectTool(this)"><p>Manage Debt</p>
-                	<div class="symbol" style="background-color: grey;">
-                    	<i class="ph ph-trend-up" style="text-align: center;"></i>
-                	</div>
-              	</div>
-              	<!-- END tools -->
-            </div>
-            </div>
-			<!-- END tool-menu -->
-      
+	<div id="chat-content">
+		
      	<!-- top bar -->
   		<div id="top-bar">
+            
           	<div class="logo" style="display: flex; flex-direction: column; justify-content: center;">
             	<h1>FinLit Rep4® Bot</h1>
               	<h2>Your Financial Assistant</h2>
           	</div>
           
           	<div class="button-row" style="flex: 1; justify-content: flex-end">
-				<!-- 3 buttons in top bar
-					1. tools-button - opens tool-menu for user to select a different tool 
-					2. reset-chat - resets the chat deleting all current messages and letting the user reselect their money mindset animal
-					3. close-chat - closes the chatbot (hides opened chatbot GUI and shows unopened chatbot GUI)
-				-->
-              	<div id="tools-button" onClick="tools()">
-                	<i class="ph ph-gear" style="text-align: center;"></i>
-            	</div>
-				<button id="reset-chat" onClick="resetChat()"><i class="ph-bold ph-arrows-clockwise"></i></button>
-              	<button class="close-chat" onClick ="chatBot()"><i class="ph-bold ph-x"></i></button>
+				<!-- 4 buttons in top bar
+                    1. change-animal - change animal personality
+					2. tools-button - links to full screen chat bot with tools 
+					3. reset-chat - resets the chat deleting all current messages
+					4. close-chat - closes the chatbot (hides opened chatbot GUI and shows unopened chatbot GUI)
+			    -->
+                <!-- change animal is a barn symbol for now  -->
+                <button id="change-animal" class="symbol" onClick="openAnimals()"><img id="change-animal-icon" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/fc03ee57461416c10e083865fcc3e6f4.png"></button>
+              	<a id="tools-button" class="symbol" href="https://www.youtube.com/watch?v=XfELJU1mRMg" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none" /><g fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3.269C14 2.568 13.432 2 12.731 2H11.27C10.568 2 10 2.568 10 3.269c0 .578-.396 1.074-.935 1.286q-.128.052-.253.106c-.531.23-1.162.16-1.572-.249a1.27 1.27 0 0 0-1.794 0L4.412 5.446a1.27 1.27 0 0 0 0 1.794c.41.41.48 1.04.248 1.572a8 8 0 0 0-.105.253c-.212.539-.708.935-1.286.935C2.568 10 2 10.568 2 11.269v1.462C2 13.432 2.568 14 3.269 14c.578 0 1.074.396 1.286.935q.052.128.105.253c.231.531.161 1.162-.248 1.572a1.27 1.27 0 0 0 0 1.794l1.034 1.034a1.27 1.27 0 0 0 1.794 0c.41-.41 1.04-.48 1.572-.249q.125.055.253.106c.539.212.935.708.935 1.286c0 .701.568 1.269 1.269 1.269h1.462c.701 0 1.269-.568 1.269-1.269c0-.578.396-1.074.935-1.287q.128-.05.253-.104c.531-.232 1.162-.161 1.571.248a1.27 1.27 0 0 0 1.795 0l1.034-1.034a1.27 1.27 0 0 0 0-1.794c-.41-.41-.48-1.04-.249-1.572q.055-.125.106-.253c.212-.539.708-.935 1.286-.935c.701 0 1.269-.568 1.269-1.269V11.27c0-.701-.568-1.269-1.269-1.269c-.578 0-1.074-.396-1.287-.935a8 8 0 0 0-.105-.253c-.23-.531-.16-1.162.249-1.572a1.27 1.27 0 0 0 0-1.794l-1.034-1.034a1.27 1.27 0 0 0-1.794 0c-.41.41-1.04.48-1.572.249a8 8 0 0 0-.253-.106C14.396 4.343 14 3.847 14 3.27Z" /><path d="M16 12a4 4 0 1 1-8 0a4 4 0 0 1 8 0Z" /></g></svg></a>
+				<button id="reset-chat" class="symbol" onClick="resetChat()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><path d="M228,48V96a12,12,0,0,1-12,12H168a12,12,0,0,1,0-24h19l-7.8-7.8a75.55,75.55,0,0,0-53.32-22.26h-.43A75.49,75.49,0,0,0,72.39,75.57,12,12,0,1,1,55.61,58.41a99.38,99.38,0,0,1,69.87-28.47H126A99.42,99.42,0,0,1,196.2,59.23L204,67V48a12,12,0,0,1,24,0ZM183.61,180.43a75.49,75.49,0,0,1-53.09,21.63h-.43A75.55,75.55,0,0,1,76.77,179.8L69,172H88a12,12,0,0,0,0-24H40a12,12,0,0,0-12,12v48a12,12,0,0,0,24,0V189l7.8,7.8A99.42,99.42,0,0,0,130,226.06h.56a99.38,99.38,0,0,0,69.87-28.47,12,12,0,0,0-16.78-17.16Z"></path></svg></button>
+              	<button class="close-chat symbol" onClick ="chatBot()"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 1024 1024"><path d="M0 0h1024v1024H0z" fill="none" /><path fill="currentColor" d="M195.2 195.2a64 64 0 0 1 90.5 0L512 421.5l226.3-226.3a64 64 0 0 1 90.5 90.5L602.5 512l226.3 226.3a64 64 0 0 1-90.5 90.5L512 602.5L285.7 828.8a64 64 0 0 1-90.5-90.5L421.5 512L195.2 285.7a64 64 0 0 1 0-90.5" /></svg></i></button>
             </div>
     	</div>
     	<!-- END top bar -->
@@ -199,10 +151,10 @@
       	<!-- messages -->
 		<div id="messages-container">
 			<div id="messages">
-				<img id="chosen-animal" src=""> <!-- putting chosen animal in the messages div was just the best location has nothing to do with being a message -->
+				<img id="chosen-animal" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/fc03ee57461416c10e083865fcc3e6f4.png"> <!-- putting chosen animal in the messages div was just the best location has nothing to do with being a message -->
 
 				<!-- message divs will be added when the user sends a message -->
-				<div id="starting-message" class="message bot">Hi! I'm Rep4®FinLit Bot, your financial literacy assistant. You can chat with me about anything financial related and I will respond with trusted information from our learning modules.</div>
+				<div id="starting-message" class="message bot">Hi! I'm Rep4®FinLit Bot, your financial literacy assistant. You can chat with me about anything financial related and I will respond with trusted information from our learning modules. The navigation bar you see above you can change your money mindset animal, reset the chat, and access our full screen chatbot!</div>
 			</div>
 		</div>
       	<!-- END messages -->
@@ -259,8 +211,6 @@
 		}
 	/* #endregion CSS reset */
 
-
-
 	/* #region CSS defaults and variables */
 
 		/* global Poppins font */
@@ -316,21 +266,13 @@
 			background-color: var(--blue-color);
 			transition: background-color 0.5s ease;
 		}
-	
 		#unopened-chat:hover .circle{
 			background-color: var(--purple-color);
 			animation: moveUpDown 0.65s ease-in-out;
 		}
-	
-		/* First circle bounce, then middle, then last one */
-		#unopened-chat:hover .circle:nth-child(1) {
-		animation-delay: 0s; 
-		}
-		#unopened-chat:hover .circle:nth-child(2) {
-		animation-delay: 0.2s; 
-		}
-		#unopened-chat:hover .circle:nth-child(3) {
-		animation-delay: 0.4s;
+		#unopened-chat img {
+			width: 100%;
+			height: 100%;
 		}
 	
 		@keyframes moveUpDown { /* for 3 dots animation on hover of closed chatbot */
@@ -368,6 +310,8 @@
 			display: flex; 
 			flex-direction: column; 
 			justify-content: center;
+
+            margin-left: 25px;
 		}
 
 		.logo h1 {
@@ -463,7 +407,7 @@
 		
 			.animal {
 				height: auto; 
-				width: 0px; /*clamp(0px, 20%, 10em); 6.5em*/
+				width: 0px;
 				transition: transform 0.5s ease, opacity 0.5s ease;
 				will-change: transform;
 			}
@@ -586,6 +530,7 @@
           	
 			border: 3px solid var(--yellow-color);
 			outline: 3px  solid var(--blue-color);
+
 			overflow: hidden;
 			
 			display: flex;
@@ -604,195 +549,83 @@
 				width: 100%; height: 60px;
 				background-color: var(--yellow-color);
 				display: flex;
+                flex-direction: row;
 				padding: 10px 16px;
 				border-bottom: 1px solid var(--brown-color);
 			
 				position: relative;
 			}
 
+			/* Drag to resize corner */
 			#resize {
-				color: var(--brown-color);
-				/* background-color: var(--brown-color); */
 				position: absolute;
-				top: 5px;
-				left: 3px;
-				z-index: 1;
-				font-weight: bold;
-				transform: rotate(-90deg);
-			}
-
-			#resize:hover {
-				cursor: nwse-resize;
-			}
-			
-			#tools-button {
-				width: var(--symbol-background); height: var(--symbol-background);
-			
-				background-color: var(--purple-color);
-				font-size: var(--chat-buttons);
-				color: var(--yellow-color);
+				height: 62px;
+				width: 40px;
 				
-				display: flex;
+				font-size: 250%;
+				color: var(--brown-color);
+				
+				background-color: var(--yellow-color);
+				box-sizing: border-box;
+				border-top-left-radius: 15px;
+				border-bottom: solid var(brown-color) 1px;
+				
+				text-align: center;
+				text-justify: distribute;
+				align-items: center;
+				justify-content: center;
+				cursor: grab;
+
+                top: 0px;
+                left: 0px;
+			}
+            
+			#resize:hover {
+				background-color: var(--purple-color);
+				color: var(--yellow-color);
+			}
+			#resize.active {
+				cursor: grabbing;
+			}
+			
+            .symbol {
+                width: var(--symbol-background); height: var(--symbol-background);
+
+                display: flex;
 				justify-content: center;
 				align-items: center;
-			
-				border-radius: 50%;
-			
-				transition: background-color 0.5s ease, transform 0.5s ease;
+                text-align: center;
+
+                border-radius: 50%;
+
+                font-size: var(--chat-buttons);
+                color: var(--yellow-color);
+                fill: var(--yellow-color);
+
+                transition: background-color 0.5s ease, transform 0.5s ease;
 				will-change: transform;
-			}
-		
-			#tools-button:hover {
-				cursor: pointer;
+            }
+
+            .symbol:hover {
+                cursor: pointer;
 				transform: scale(1.1);
+            }
+
+            #change-animal {
+                /* background-color: var(--brown-color); */
+            }
+			#change-animal-icon {
+				height: 100%;
+				width: 100%;
+				transition: all 0.25s ease-in-out;
 			}
-		
-		
-			/* #region tools menu  */
-    	    #tools-menu {
-				width: 100%; height: 100%;
-        	    position: absolute;
-				z-index: 3;
-			
-				background-color: rgb(0, 0, 0, 0.5); 
-				border-radius: 14px;
+
+			#tools-button {
+				background-color: var(--purple-color);
 			}
-	
-			#tools-content {
-				background: white;
-				
-				transition: opacity 0.5s ease;
-				
-				position: absolute;
-					
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-				
-				border: rgb(50, 50, 50, 1) solid 2px;
-				border-radius: 6px;
-				
-				display: flex;
-				flex-direction: column;
-				z-index: 1;
-			}
-			
-				#close-tools {
-					padding: 0;
-					margin: 0;
-
-					color: Dimgrey;
-					font-size: var(--header-or-symbol);
-				
-					transition: color 0.5s ease, transform 0.5s ease;
-					will-change: transform;
-                  	
-					display: flex;
-					justify-content: center;
-					align-items: center;
-				}
-  	
-  				#close-tools i {
-					font-weight: bold;
-  				}
-			
-				#close-tools:hover {
-					cursor: pointer;
-					color: black;
-				
-					transform: scale(1.1);
-				}
-			
-				.tool {
-					display: flex;
-					flex-direction: row;
-					align-items: center;
-					justify-content: center;
-		            gap: 5px;
-					padding: 5px;
-                  
-					font-family: sans-serif;
-					border-top: 1px solid rgb(0, 0, 0, 0.6);
-					width: 100%;
-				}
-  
-  				.tool p {
-  					font-family: sans-serif;
-					font-size: var(--large-body);
-					white-space: nowrap;
-  				}
-
-				.tool:hover {
-					cursor: pointer;
-					background-color: rgb(0, 0, 0, 0.2);
-				}
-  	
-                #current-tool {
-					border-top: 0px;
-					border-bottom: 2px solid rgb(0, 0, 0, 0.8);
-		        }  					
-				
-                #current-tool:hover { /* no hover effect on current tool */
-					background-color: initial;
-		            cursor: default;
-                }
-				
-				#none {
-					border-top: 0px;
-				}
-
-				#manage-debt {
-					border-radius: 0 0 4px 4px
-				}
-
-				#manage-debt:hover .symbol { /* prevent grey on grey with a white border seperation */
-					outline: 1px solid white;
-				}
-			
-				.symbol {
-					width: var(--symbol-background); height: var(--symbol-background);
-				
-					font-size: var(--header-or-symbol);
-					font-family: sans-serif;
-					color: white;
-
-					display: flex;
-					justify-content: center;
-					align-items: center;
-					margin-left: auto;
-				
-					border-radius: 50%;
-				}
-
-				#current-tool-symbol {
-					margin-left: 0;
-				}
-
-				#close-tools {
-					margin-left: auto;
-				}
-			/* #endregion tools menu */
 		
             #reset-chat {
-				width: var(--symbol-background); height: var(--symbol-background);
-              	
-              	color: var(--yellow-color);
-              	transition: transform 0.5s ease;
-				will-change: transform;
-              	font-size: var(--chat-buttons);
-              	text-align: center;
-              	
-              	display: flex;
-              	justify-content: center;
-              	align-items: center;
-              
               	background-color: var(--blue-color);
-                border-radius: 50%;
-            }	
-  
-            #reset-chat:hover {
-				cursor: pointer;
-				transform: scale(1.1);
             }
 
 			.close-chat {
@@ -803,25 +636,13 @@
 				will-change: transform;
 
 				font-size: var(--chat-buttons);
-				text-align: center;
-			
-				display: flex;
-				justify-content: center;
-				align-items: center;
 			
 				background-color: rgba(0, 0, 0, 0.2);
-				border-radius: 50%;
 			}
 			
 			.close-chat:hover {
-				cursor: pointer;
 				color: var(--purple-color);
-				transform: scale(1.1);
 			}
-  
-            .close-chat i {
-				font-weight: 900;
-            }
 		
 			.button-row {
 				display: flex;
@@ -883,7 +704,7 @@
 			}
 		
 			.user {
-				background-color: color-mix(in srgb, white 100%, transparent); /* change percentage for opac user message background */
+				background-color: color-mix(in srgb, var(--blue-color)  100%, transparent); /* change percentage for opac user message background */
 				margin-left: auto;  /* pushes to the right */
 				border-bottom-right-radius: 1px;
 
@@ -891,7 +712,7 @@
 			}
 
 			.bot {
-				background-color: color-mix(in srgb, var(--blue-color) 100%, transparent); /* change percentage for opac bot message background */
+				background-color: color-mix(in srgb, white  100%, transparent); /* change percentage for opac bot message background */
 				margin-right: auto;  /* pushes tom the left */
 				border-bottom-left-radius: 1px;
 
@@ -1061,6 +882,11 @@
 </style>
 
 <script>
+	 // Sleep function
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+	
 	// #####################
 	// ##### VARIABLES #####
 	// #####################
@@ -1086,7 +912,6 @@
 
 	// tools
 	const toolsButton  = document.getElementById("tools-button");
-    const toolsMenu = document.getElementById("tools-menu");
 
 	// chat input/messages
 	const chatInput = document.getElementById("chat-input");
@@ -1278,7 +1103,6 @@
         window.addEventListener('mouseup', stopDrag);
 	})
 
-
 	// open/close chatbot
 	function chatBot() { 
       	if (chatContainer.classList.contains("hidden")) { // open chat
@@ -1298,6 +1122,18 @@
 		});
 	}
 
+	
+		
+	
+	
+    function openAnimals () {
+        animalChoice.classList.toggle("hidden");
+        chatContent.classList.toggle("hidden");
+		if (chatContent.classList.contains("hidden")) {
+			
+		}
+    }
+
 	function selectAnimal (element) {
 		// hide all animal that weren't chosen
 		const animalString = element.classList[1];
@@ -1305,7 +1141,7 @@
 
 		if (element.classList.contains("animal")) {
 			selectedAnimal.src = element.src;
-			selectedAnimal.classList.toggle(animalString)
+			selectedAnimal.classList.toggle(animalString);
 			animalName.textContent = animalString;
 			animalDescription.textContent = descriptions[animalString];
 		}
@@ -1367,52 +1203,6 @@
         }
     }
   
-	// open/close tools menu
-  	function tools() {
-      	if (toolsMenu.classList.contains("hidden")) { // open tools
-			toolsMenu.classList.remove('hidden');
-        } else { // close tools
-          	toolsMenu.classList.add('hidden');
-    	}
-    }
-  	
-	// user starts with no tools selected (variable keeps track of the tool string to send over to the backend)
-  	var tool = selectTool(document.getElementById("none")) 
-
-	//changes tools-button visually to the new tool symbol that was selected and changes current tool variable
-  	function selectTool(element) { 
-
-		// get the new visuals from the clicked on tool
-  		const new_symbol = element.querySelector('.symbol');
-    	const new_icon = element.querySelector('.symbol i');
-
-		// get toolsButton visuals that will be changing to the new visuals
-    	const toolsButtonIcon = toolsButton.querySelector('i');
-		
-		// get currentTool value inside of the tools menu dropdown 
-		// (just a visual inside of the drop down menu to tell the user within the menu what tool they are using)
-      	const currentTool = document.getElementById('current-tool-symbol')
-        const currentToolIcon = currentTool.querySelector('i');
-
-    	// set tool-button to new visuals
-    	toolsButton.style.backgroundColor = new_symbol.style.backgroundColor;
-    	toolsButtonIcon.className = new_icon.className;
-      	
-      	//set current-tool to new visuals
-    	currentTool.style.backgroundColor = new_symbol.style.backgroundColor;
-    	currentToolIcon.className = new_icon.className;
-      
-		// close the tool menu
-    	tools(); 
-      	
-		// selectTool is only called in the HTML onClick attribute on the tools elements. When it is called we set
-		// the tool value, via a return statement, that will be passed to the LLM when a message is sent like so tool=selectTool(element)
-      	if (element.id == "none") {
-      		return "" // when there is no tool python backend needs an empty value
-        }
-      	return element.id
-    }
-  
 	// resets chatbot deleting all messages, setting a new sessionId, and going back to animal choice menu
   	function resetChat() {
     	if (confirm('Are you sure you want to reset?\n\nThis will delete all your current chat history and allow you to switch to a different money mindset animal.')) {
@@ -1428,15 +1218,7 @@
 			// set input to nothing
 			chatInput.value = "";
 			adjustChatInputHeight();
-          
-          	// set tool to none
-          	const noTool = document.getElementById("none")
-          	tool = selectTool(noTool);
 
-			// trigger tools again to close menu if menu is now open from reset
-			if (!document.getElementById("tools-menu").classList.contains("hidden")){
-          		tools();
-			}
           	// Delete all messages
           	const elements = document.querySelectorAll('.message');
           	for (let i = 0; i < elements.length; i++) {
@@ -1679,18 +1461,6 @@
 			gap: min(4vw, 3dvh);
 		}
 
-		.tool {
-			padding: 5px;
-		}
-
-		.tool p {
-			font-size: calc(1.2*var(--large-body));
-		}
-
-		.symbol {
-			font-size: calc(1.2*var(--header-or-symbol));
-		}
-
 		#chat-input {
 			font-size: 16px; /* prevents iOS auto-zoom on input focus */
 		}
@@ -1705,15 +1475,6 @@
 		#animal-question {
 			font-size: calc(0.75*var(--header-or-symbol))
 		}
-
-		.tool p {
-			font-size: calc(var(--large-body));
-		}
-
-		.symbol {
-			font-size: calc(var(--header-or-symbol));
-		}
-
 	}
 
 </style>
@@ -1760,6 +1521,18 @@
 			}
 		}
 	}
+	// animal icon rotation
+	let currAnimal = 0;
+	async function rotateAnimalIcon(){
+		let animals = Object.keys(animalDict);
+		let icon = document.getElementById("change-animal-icon");
+		icon.style.opacity = 0;
+		await sleep(500);
+		icon.style.opacity = 1;
+		currAnimal = (currAnimal + 1) % animals.length;
+		icon.src = animalDict[animals[currAnimal]][0];
+	}
+	setInterval(rotateAnimalIcon, 4000);
 </script>
 <!-- END sizing adjustments for mobile/small devices -->
 

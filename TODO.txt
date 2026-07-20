@@ -1,0 +1,14 @@
+- change closed chatbot icon to random animal 
+    which will also be the users animal that is sent to the backend unless the user changes their animal
+
+- Make resize icon larger and not position absolute like Diego design (change icon???)
+
+- change to linear gradient on message menu
+
+- start on chat menu
+    - add a ferpa pop up on startup
+
+- add a new button to change animal personality (arrow button is to reset all of chat) 
+    make sure to make button very clear of what the button does
+
+- redo animal personality menu no confirm menu
