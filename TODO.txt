@@ -12,3 +12,5 @@
     make sure to make button very clear of what the button does
 
 - redo animal personality menu no confirm menu
+
+- refresh chat screen is not changing properly

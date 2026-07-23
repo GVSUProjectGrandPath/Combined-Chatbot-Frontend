@@ -52,7 +52,7 @@
       	<div id="question-container">
           	<div style="display: flex; flex-direction: row; width: 100%; padding: 0px 10px; align-items: center;">
               <div class="logo">
-                  <h1 >FinLit Rep4® Bot</h1>
+                  <h1>Rep4®FinLit Bot</h1>
               </div>
               <button class="close-chat symbol" onClick ="chatBot()" style="margin-left: auto; padding: auto 5px;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 1024 1024"><path d="M0 0h1024v1024H0z" fill="none" /><path fill="currentColor" d="M195.2 195.2a64 64 0 0 1 90.5 0L512 421.5l226.3-226.3a64 64 0 0 1 90.5 90.5L602.5 512l226.3 226.3a64 64 0 0 1-90.5 90.5L512 602.5L285.7 828.8a64 64 0 0 1-90.5-90.5L421.5 512L195.2 285.7a64 64 0 0 1 0-90.5" /></svg></button>
             </div>
@@ -119,6 +119,12 @@
 		</div>
   	</div>
   	<!-- END animal choice -->
+
+	<div class="refresh-confirmation">
+      <p>Are you sure you want to refresh the chat?</p>
+      <button class="confirm-refresh" onClick="resetChat()">Yes</button>
+      <button class="cancel-refresh" onclick="ChatScreenToggle()">No</button>
+    </div>
  
 	<!-- Chat interface -->
 	<div id="chat-content">
@@ -128,7 +134,7 @@
             
           	<div class="logo" style="display: flex; flex-direction: column; justify-content: center;">
             	<h1>FinLit Rep4® Bot</h1>
-              	<h2>Your Financial Assistant</h2>
+              	<!-- <h2>Your Financial Assistant</h2> -->
           	</div>
           
           	<div class="button-row" style="flex: 1; justify-content: flex-end">
@@ -141,7 +147,7 @@
                 <!-- change animal is a barn symbol for now  -->
                 <button id="change-animal" class="symbol" onClick="openAnimals()"><img id="change-animal-icon" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/fc03ee57461416c10e083865fcc3e6f4.png"></button>
               	<a id="tools-button" class="symbol" href="https://www.youtube.com/watch?v=XfELJU1mRMg" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none" /><g fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3.269C14 2.568 13.432 2 12.731 2H11.27C10.568 2 10 2.568 10 3.269c0 .578-.396 1.074-.935 1.286q-.128.052-.253.106c-.531.23-1.162.16-1.572-.249a1.27 1.27 0 0 0-1.794 0L4.412 5.446a1.27 1.27 0 0 0 0 1.794c.41.41.48 1.04.248 1.572a8 8 0 0 0-.105.253c-.212.539-.708.935-1.286.935C2.568 10 2 10.568 2 11.269v1.462C2 13.432 2.568 14 3.269 14c.578 0 1.074.396 1.286.935q.052.128.105.253c.231.531.161 1.162-.248 1.572a1.27 1.27 0 0 0 0 1.794l1.034 1.034a1.27 1.27 0 0 0 1.794 0c.41-.41 1.04-.48 1.572-.249q.125.055.253.106c.539.212.935.708.935 1.286c0 .701.568 1.269 1.269 1.269h1.462c.701 0 1.269-.568 1.269-1.269c0-.578.396-1.074.935-1.287q.128-.05.253-.104c.531-.232 1.162-.161 1.571.248a1.27 1.27 0 0 0 1.795 0l1.034-1.034a1.27 1.27 0 0 0 0-1.794c-.41-.41-.48-1.04-.249-1.572q.055-.125.106-.253c.212-.539.708-.935 1.286-.935c.701 0 1.269-.568 1.269-1.269V11.27c0-.701-.568-1.269-1.269-1.269c-.578 0-1.074-.396-1.287-.935a8 8 0 0 0-.105-.253c-.23-.531-.16-1.162.249-1.572a1.27 1.27 0 0 0 0-1.794l-1.034-1.034a1.27 1.27 0 0 0-1.794 0c-.41.41-1.04.48-1.572.249a8 8 0 0 0-.253-.106C14.396 4.343 14 3.847 14 3.27Z" /><path d="M16 12a4 4 0 1 1-8 0a4 4 0 0 1 8 0Z" /></g></svg></a>
-				<button id="reset-chat" class="symbol" onClick="resetChat()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><path d="M228,48V96a12,12,0,0,1-12,12H168a12,12,0,0,1,0-24h19l-7.8-7.8a75.55,75.55,0,0,0-53.32-22.26h-.43A75.49,75.49,0,0,0,72.39,75.57,12,12,0,1,1,55.61,58.41a99.38,99.38,0,0,1,69.87-28.47H126A99.42,99.42,0,0,1,196.2,59.23L204,67V48a12,12,0,0,1,24,0ZM183.61,180.43a75.49,75.49,0,0,1-53.09,21.63h-.43A75.55,75.55,0,0,1,76.77,179.8L69,172H88a12,12,0,0,0,0-24H40a12,12,0,0,0-12,12v48a12,12,0,0,0,24,0V189l7.8,7.8A99.42,99.42,0,0,0,130,226.06h.56a99.38,99.38,0,0,0,69.87-28.47,12,12,0,0,0-16.78-17.16Z"></path></svg></button>
+				<button id="reset-chat" class="symbol" onClick="ChatScreenToggle()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><path d="M228,48V96a12,12,0,0,1-12,12H168a12,12,0,0,1,0-24h19l-7.8-7.8a75.55,75.55,0,0,0-53.32-22.26h-.43A75.49,75.49,0,0,0,72.39,75.57,12,12,0,1,1,55.61,58.41a99.38,99.38,0,0,1,69.87-28.47H126A99.42,99.42,0,0,1,196.2,59.23L204,67V48a12,12,0,0,1,24,0ZM183.61,180.43a75.49,75.49,0,0,1-53.09,21.63h-.43A75.55,75.55,0,0,1,76.77,179.8L69,172H88a12,12,0,0,0,0-24H40a12,12,0,0,0-12,12v48a12,12,0,0,0,24,0V189l7.8,7.8A99.42,99.42,0,0,0,130,226.06h.56a99.38,99.38,0,0,0,69.87-28.47,12,12,0,0,0-16.78-17.16Z"></path></svg></button>
               	<button class="close-chat symbol" onClick ="chatBot()"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 1024 1024"><path d="M0 0h1024v1024H0z" fill="none" /><path fill="currentColor" d="M195.2 195.2a64 64 0 0 1 90.5 0L512 421.5l226.3-226.3a64 64 0 0 1 90.5 90.5L602.5 512l226.3 226.3a64 64 0 0 1-90.5 90.5L512 602.5L285.7 828.8a64 64 0 0 1-90.5-90.5L421.5 512L195.2 285.7a64 64 0 0 1 0-90.5" /></svg></i></button>
             </div>
     	</div>
@@ -316,7 +322,7 @@
 
 		.logo h1 {
 			color: var(--brown-color); 
-			font-size: var(--large-body);
+			font-size: 0.9rem;
 			font-weight: bold;
 		}
 
@@ -521,7 +527,7 @@
           		radial-gradient(circle, white 0%, var(--salmon-color));
           		radial-gradient(circle, white 0%, var(--teal-color));
           	*/
-          	background-image: radial-gradient(circle, var(--teal-color) 0%, white);
+          	background-image: linear-gradient(var(--teal-color) 0%, white);
           	/*
           	background-repeat: no-repeat;
 			background-position: center;
@@ -559,7 +565,7 @@
 			/* Drag to resize corner */
 			#resize {
 				position: absolute;
-				height: 62px;
+				height: 58px;
 				width: 40px;
 				
 				font-size: 250%;
@@ -856,6 +862,41 @@
 	/* ######################### */ 
 	/* #endregion opened chatbot */  
   	/* ######################### */ 
+
+	/* Refresh chat screen */
+    .refresh-confirmation {
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.95);
+        padding: 10px;
+        display: none;
+        visibility: hidden;
+        opacity: 0;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+		top: 60px;
+        width: 100%;
+        height: calc(100% - 60px);
+		border-bottom-left-radius: 15px;
+		border-bottom-right-radius: 15px;
+    }
+    .refresh-confirmation.active {
+        display: flex;
+        visibility: visible;
+        opacity: 1;
+    }
+    .refresh-confirmation button {
+        margin: 5%;
+        padding: 10px 25px;
+        background-color: var(--yellow-color);
+        color: var(--purple-color);
+        border-radius: 5px;
+    }
+    .refresh-confirmation button:hover {
+        background-color: var(--purple-color);
+        color: var(--yellow-color);
+    }
 </style>
 
 <style>
@@ -1203,33 +1244,36 @@
         }
     }
   
+	// Opens/Closes the refresh screen
+	const refreshScreen = document.querySelector('.refresh-confirmation');
+	function ChatScreenToggle() {
+		refreshScreen.classList.toggle('active');
+	}
+
 	// resets chatbot deleting all messages, setting a new sessionId, and going back to animal choice menu
   	function resetChat() {
-    	if (confirm('Are you sure you want to reset?\n\nThis will delete all your current chat history and allow you to switch to a different money mindset animal.')) {
-    		// do the reset
+		// show animal GUI hide chat interface
+		confirmAnimalSelection(document.getElementById("default-animal"));
+		
+		// set new sessionId
+		sessionId = crypto.randomUUID();
+		sessionStorage.setItem("sessionId", sessionId);
 
-          	// show animal GUI hide chat interface
-      		confirmAnimalSelection(document.getElementById("default-animal"));
-          
-          	// set new sessionId
-        	sessionId = crypto.randomUUID();
-    		sessionStorage.setItem("sessionId", sessionId);
+		// set input to nothing
+		chatInput.value = "";
+		adjustChatInputHeight();
 
-			// set input to nothing
-			chatInput.value = "";
-			adjustChatInputHeight();
-
-          	// Delete all messages
-          	const elements = document.querySelectorAll('.message');
-          	for (let i = 0; i < elements.length; i++) {
-             	if (elements[i].id != "starting-message"){
-            		elements[i].remove();
-                }
-            }
-          
-          	// if scroll button was showing hide it now as there will only be the welcome message
-          	showScrollBottomButton()
-  		}
+		// Delete all messages
+		const elements = document.querySelectorAll('.message');
+		for (let i = 0; i < elements.length; i++) {
+			if (elements[i].id != "starting-message"){
+				elements[i].remove();
+			}
+		}
+		
+		// if scroll button was showing hide it now as there will only be the welcome message
+		showScrollBottomButton()
+		ChatScreenToggle()
     }
   
 	const loadingMessage = `Thinking <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none" /><circle cx="4" cy="12" r="3" fill="currentColor"><animate id="SVG9IgbRbsl" attributeName="r" begin="0;SVGFUNpCWdG.end-0.25s" dur="0.75s" values="3;.2;3" /></circle><circle cx="12" cy="12" r="3" fill="currentColor"><animate attributeName="r" begin="SVG9IgbRbsl.end-0.6s" dur="0.75s" values="3;.2;3" /></circle><circle cx="20" cy="12" r="3" fill="currentColor"><animate id="SVGFUNpCWdG" attributeName="r" begin="SVG9IgbRbsl.end-0.45s" dur="0.75s" values="3;.2;3" />`;
