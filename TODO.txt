@@ -11,6 +11,8 @@
 - add a new button to change animal personality (arrow button is to reset all of chat) 
     make sure to make button very clear of what the button does
 
-- redo animal personality menu no confirm menu
+- add a back button for the choose personality feature
 
-- refresh chat screen is not changing properly
+- have the refresh screen and choose personality button not be able to be active at the same time
+
+- redo animal personality menu no confirm menu
