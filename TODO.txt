@@ -1,18 +1,24 @@
-- change closed chatbot icon to random animal 
-    which will also be the users animal that is sent to the backend unless the user changes their animal
+- On enter, choose a random animal then select it with the cahnge animal functionn
 
-- Make resize icon larger and not position absolute like Diego design (change icon???)
+- Change redo personality menu (should have no confirm menu)
 
+- Have the main screen animal icon be used better (position it better)
+- Eventually get new faces for every single animal
+
+- have the refresh screen and choose personality button not be able to be active at the same time (small bug)
+
+- have the refresh chat screen buttons and text be able to scale 
+
+- Change animal function (changes pfps, the selected animal in the change animal screen, other stuff)
+
+- put the rows and desscription in the same container, have their hieghts be defined in percents
+
+- add the warmup chat
+
+FINISHED:
 - change to linear gradient on message menu
-
 - start on chat menu
-    - add a ferpa pop up on startup
-
-- add a new button to change animal personality (arrow button is to reset all of chat) 
-    make sure to make button very clear of what the button does
-
+- add a new button to change animal personality (arrow button is to reset all of chat) (make sure to make button very clear of what the button does)
 - add a back button for the choose personality feature
-
-- have the refresh screen and choose personality button not be able to be active at the same time
-
-- redo animal personality menu no confirm menu
+- add a ferpa pop up on startup
+- Make resize icon larger and not position absolute like Diego design (change icon???)

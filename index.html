@@ -27,8 +27,8 @@
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 <!-- END IMPORTS -->
 
-<!-- unopened-chat -->
-<!-- <button id="unopened-chat" class="hidden" onClick = "chatBot()">
+<!-- unopened-chat-icon -->
+<!-- <button id="unopened-chat-icon" class="hidden" onClick = "chatBot()">
 	<div id="message-symbol" style="width: 44px; height: 32px; background-color: white; border-radius: 8px; padding: 0; margin: 0; display: flex; justify-content: center; align-items: center; gap: 2px;">
       <div class="circle"></div>
       <div class="circle"></div>
@@ -37,11 +37,11 @@
     <div id="message-symbol-tail" style="position: absolute; height: 10px; width: 8px; border-bottom-right-radius: 100%; background-color: white; bottom: 20px; left: 25px;"></div>
 </button> -->
 <!-- Diego's Version -->
-<button id="unopened-chat" class="hidden" onClick = "chatBot()">
+<button id="unopened-chat-icon" class="hidden" onClick = "chatBot()">
 	<img src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/fc03ee57461416c10e083865fcc3e6f4.png">
 </button>
 
-<!-- END unopened-chat -->
+<!-- END unopened-chat-icon -->
 
 
 <!-- opened chat -->
@@ -52,81 +52,91 @@
       	<div id="question-container">
           	<div style="display: flex; flex-direction: row; width: 100%; padding: 0px 10px; align-items: center;">
               <div class="logo">
-                  <h1>Rep4®FinLit Bot</h1>
+                  <h1>FinLit&nbsp;</h1><h2>Rep4® Bot</h2>
               </div>
 			  <div style="margin-left: auto; display: flex; flex-direction: row; gap: 10px">
-				<button class="return-chat symbol" onClick ="openAnimals()">↩</button>
+				<button class="return-chat symbol" onClick ="openAnimals()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><path d="M236,200a12,12,0,0,1-24,0,84.09,84.09,0,0,0-84-84H61l27.52,27.51a12,12,0,0,1-17,17l-48-48a12,12,0,0,1,0-17l48-48a12,12,0,0,1,17,17L61,92h67A108.12,108.12,0,0,1,236,200Z"></path></svg></button>
               	<button class="close-chat symbol" onClick ="chatBot()"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 1024 1024"><path d="M0 0h1024v1024H0z" fill="none" /><path fill="currentColor" d="M195.2 195.2a64 64 0 0 1 90.5 0L512 421.5l226.3-226.3a64 64 0 0 1 90.5 90.5L602.5 512l226.3 226.3a64 64 0 0 1-90.5 90.5L512 602.5L285.7 828.8a64 64 0 0 1-90.5-90.5L421.5 512L195.2 285.7a64 64 0 0 1 0-90.5" /></svg></button>
 			  </div>
 			  </div>
-      		<h1 id="animal-question">Which Money Mindset Animal are You?</h1>
+      		<h1 id="animal-question">Which Animal are you?</h1>
 			<h2 id="quiz-link">Don't know your Animal? Take the quiz <a href="https://quiz.rep4finlit.org/" target="_blank" style="text-decoration: underline; color: var(--purple-color);">here</a></h2>
       	</div>
 
-		<!-- animals-4rows -->
-		<!-- Default animal display of 2 animals per row (alternate display is later with 2 rows of 4 animals) -->
-      	<div id="animals-4rows" class="animals">
-			<!-- Image source links are hosted on LearnWorlds -->
-          	<div class="animal-row">
-            	<img id= "default-animal" class="animal Squirrel" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/fc03ee57461416c10e083865fcc3e6f4.png">
-            	<img class="animal Rabbit" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/0e085720420940b17bffd4a3f0419cc1.png">
-          	</div>
+		<div id="animal-select-container-bigger">		
+			<!-- animals-4rows -->
+			<!-- Default animal display of 2 animals per row (alternate display is later with 2 rows of 4 animals) -->
+			<div id="animals-4rows" class="animals" style="display: none;">
+				<!-- Image source links are hosted on LearnWorlds -->
+				<div class="animal-row">
+					<img id= "default-animal" class="animal Squirrel" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/fc03ee57461416c10e083865fcc3e6f4.png">
+					<img class="animal Rabbit" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/0e085720420940b17bffd4a3f0419cc1.png">
+				</div>
 
-          	<div class="animal-row">
-            	<img class="animal Octopus" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/5c0a7d7bd7e10ebd31492c6c00119505.png">
-            	<img class="animal Panda" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/28913e2dcb49252975a6f20c76341ed9.png">
-          	</div>
+				<div class="animal-row">
+					<img class="animal Octopus" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/5c0a7d7bd7e10ebd31492c6c00119505.png">
+					<img class="animal Panda" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/28913e2dcb49252975a6f20c76341ed9.png">
+				</div>
 
-          	<div class="animal-row">
-            	<img class="animal Armadillo" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/19a8fc0ed47d8d7f7043f4000ed0e3b5.png">
-            	<img class="animal Poodle" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/f3f3b8d63ca3eee73c0782abbe2f25c0.png">
-         	 </div>
+				<div class="animal-row">
+					<img class="animal Armadillo" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/19a8fc0ed47d8d7f7043f4000ed0e3b5.png">
+					<img class="animal Poodle" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/f3f3b8d63ca3eee73c0782abbe2f25c0.png">
+				</div>
 
-         	 <div class="animal-row">
-            	<img class="animal Owl" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/469b5dcb8fc92cf35422bb36ab843b3e.png">
-            	<img class="animal Bee" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/5dcd3605e0edd7bf81cc0c85278560d3.png">
-          	</div>
-        </div>
-		<!-- END animals-4rows -->
-
-		<!-- animal-2rows -->
-		<!-- Displays when the user 1. has a smaller screen and 2. has more width than height on said screen -->
-		 	<!-- It makes the animal photos into 2 rows as appose to 4 rows which utilizes width more than height -->	 
-		<div id="animals-2rows" class="animals">
-			<div class="animal-row">
-				<img class="animal Squirrel" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/fc03ee57461416c10e083865fcc3e6f4.png">
-            	<img class="animal Octopus" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/5c0a7d7bd7e10ebd31492c6c00119505.png">
-				<img class="animal Armadillo" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/19a8fc0ed47d8d7f7043f4000ed0e3b5.png">
-				<img class="animal Owl" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/469b5dcb8fc92cf35422bb36ab843b3e.png">
-			</div>
-
-			<div class="animal-row">
-				<img class="animal Rabbit" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/0e085720420940b17bffd4a3f0419cc1.png">
-				<img class="animal Panda" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/28913e2dcb49252975a6f20c76341ed9.png">
-				<img class="animal Poodle" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/f3f3b8d63ca3eee73c0782abbe2f25c0.png">
-				<img class="animal Bee" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/5dcd3605e0edd7bf81cc0c85278560d3.png">
-			</div>
-		</div>
-		<!-- END animal-2rows -->
-
-		<div id="animal-confirmation" class="hidden">
-			<img id="selected-animal" class="animal" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/fc03ee57461416c10e083865fcc3e6f4.png">
-			<div id="animal-description-container">
-				<h1 id="animal-name"></h1>
-				<p id="animal-description"></p>
-				<div class="button-row">
-					<button id="back-button" onClick="selectAnimal(this)">Back</button>
-					<button id="confirm-animal" onClick="confirmAnimalSelection()">Confirm</button>
+				<div class="animal-row">
+					<img class="animal Owl" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/469b5dcb8fc92cf35422bb36ab843b3e.png">
+					<img class="animal Bee" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/5dcd3605e0edd7bf81cc0c85278560d3.png">
 				</div>
 			</div>
+			<!-- END animals-4rows -->
+
+			<!-- animal-2rows -->
+			<!-- Displays when the user 1. has a smaller screen and 2. has more width than height on said screen -->
+				<!-- It makes the animal photos into 2 rows as appose to 4 rows which utilizes width more than height -->	 
+			<div id="animals-2rows" class="animals" style="display: flex">
+				<div class="animal-row">
+					<img class="animal Squirrel" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/fc03ee57461416c10e083865fcc3e6f4.png">
+					<img class="animal Octopus" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/5c0a7d7bd7e10ebd31492c6c00119505.png">
+					<img class="animal Armadillo" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/19a8fc0ed47d8d7f7043f4000ed0e3b5.png">
+					<img class="animal Owl" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/469b5dcb8fc92cf35422bb36ab843b3e.png">
+				</div>
+
+				<div class="animal-row">
+					<img class="animal Rabbit" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/0e085720420940b17bffd4a3f0419cc1.png">
+					<img class="animal Panda" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/28913e2dcb49252975a6f20c76341ed9.png">
+					<img class="animal Poodle" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/f3f3b8d63ca3eee73c0782abbe2f25c0.png">
+					<img class="animal Bee" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/5dcd3605e0edd7bf81cc0c85278560d3.png">
+				</div>
+
+				<div class="animal-description-container">
+					<img class="animal-description-img" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/0e085720420940b17bffd4a3f0419cc1.png">
+					<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px;">
+						<h1 id="animal-name">Panda</h1>
+						<p id="animal-description">The Panda is a gentle giant with a love for bamboo. They are known for their distinctive black and white fur and their calm demeanor.</p>
+						<button id="confirm-animal" onClick="confirmAnimalSelection()">Confirm</button>
+					</div>
+				</div>
+			</div>
+
+		<!-- END animal-2rows -->
 		</div>
+		
+
   	</div>
   	<!-- END animal choice -->
 
+	<div class="start-screen">
+      <p>Hi! I'm Rep4®bot! I am here to help with financial literacy questions! Please refrain from giving us any FERPA related informaton!</p>
+      <button class="next-btn">next</button>
+    </div>
+
 	<div class="refresh-confirmation">
-      <p>Are you sure you want to refresh the chat?</p>
-      <button class="confirm-refresh" onClick="resetChat()">Yes</button>
-      <button class="cancel-refresh" onclick="ChatScreenToggle()">No</button>
+		<p>Are you sure you want to reset the chat?<br><b>All message history will be lost.</b></p>
+		<div style="display: flex; flex-direction: row; justify-content: center;">
+			<button class="cancel-refresh" onclick="ChatScreenToggle()">No</button>
+			<button class="confirm-refresh" onClick="resetChat()">Yes</button>
+		</div>
+	
     </div>
  
 	<!-- Chat interface -->
@@ -135,9 +145,8 @@
      	<!-- top bar -->
   		<div id="top-bar">
             
-          	<div class="logo" style="display: flex; flex-direction: column; justify-content: center;">
-            	<h1>FinLit Rep4® Bot</h1>
-              	<!-- <h2>Your Financial Assistant</h2> -->
+          	<div class="logo">
+            	<h1>FinLit&nbsp;</h1><h2>Rep4® Bot</h2>
           	</div>
           
           	<div class="button-row" style="flex: 1; justify-content: flex-end">
@@ -250,7 +259,7 @@
   	/* ######################## */
 	/* #region unopened chatbot */
   	/* ######################## */
-		#unopened-chat {
+		#unopened-chat-icon {
 			position: fixed;
 			width: 80px; height: 80px; bottom: 20px; right: 20px; z-index: 20;
 		
@@ -263,7 +272,7 @@
 			transition: opacity 350ms ease, background-color 0.5s ease;
 		}
 	
-		#unopened-chat:hover {
+		#unopened-chat-icon:hover {
 			cursor: pointer;
 			background-color: var(--purple-color);
 		}
@@ -275,11 +284,11 @@
 			background-color: var(--blue-color);
 			transition: background-color 0.5s ease;
 		}
-		#unopened-chat:hover .circle{
+		#unopened-chat-icon:hover .circle{
 			background-color: var(--purple-color);
 			animation: moveUpDown 0.65s ease-in-out;
 		}
-		#unopened-chat img {
+		#unopened-chat-icon img {
 			width: 100%;
 			height: 100%;
 		}
@@ -317,10 +326,10 @@
 
 		.logo {
 			display: flex; 
-			flex-direction: column; 
+			flex-direction: row; 
 			justify-content: center;
 
-            margin-left: 25px;
+            margin-left: 28px;
 		}
 
 		.logo h1 {
@@ -331,7 +340,8 @@
 
 		.logo h2 {
 			color: var(--purple-color); 
-			font-size: 0.875em;
+			font-size: 0.9em;
+			font-weight: bold;
 		}
 	
 		/* #region animal choice */
@@ -391,39 +401,41 @@
 		
 			.animals {
 				position: relative;
-              	background: radial-gradient(circle, white 0%, var(--purple-color));
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
 		        align-items: center;
-              
               	height: 100%;
 		        width: 100%;
+				margin-top: 15px;
 			}
 		
 			#animals-2rows { 
-				display: none; 
+				display: none;
 			}
 
 			.animal-row {
 				display: flex;
 				flex-direction: row;
-				width: 100%;
+				width: 95%;
 				justify-content: center;
-
-				gap: 25px;
 			}
 		
 			.animal {
-				height: auto; 
-				width: 0px;
 				transition: transform 0.5s ease, opacity 0.5s ease;
 				will-change: transform;
+
+				/* aspect-ratio: 1/1 !important; */
 			}
 		
 			.animal:hover {
 				cursor: pointer;
 				transform: scale(1.1);
+			}
+
+			.animal.active {
+				transform: scale(1.2);
+				border: 3px solid var(--yellow-color);
 			}
 
 			#animal-confirmation {
@@ -446,15 +458,32 @@
 				z-index: 1;
 			}
 
-			#animal-description-container {
-				background-color: white;
-				padding: 30px;
-				margin-top: -30px;
+			#animal-select-container-bigger {
+				background: radial-gradient(circle, white 0%, var(--purple-color));
+				height: 100%;
+				width: 100%;
+			}
+
+			.animal-description-container {
+				height: 100%;
+				margin: 15px;
+				margin-bottom: 30px;
+				border: 3px solid var(--blue-color);
 				border-radius: 15px;
+
+				background-color: rgba(255, 255, 255, 0.6);
+				padding: 30px;
 				display: flex;
-				flex-direction: column;
+				flex-direction: row;
 				align-items: center;
 				gap: 5px;
+			}
+			.animal-description-container.active {
+				flex-direction: column;
+			}
+			.animal-description-img {
+				width: 100px;
+				height: auto;
 			}
 
 			#animal-name {
@@ -465,6 +494,7 @@
 
 			#animal-description {
 				color: var(--brown-color);
+				text-align: center;
 			}
 
 			#animal-description-container .button-row {
@@ -486,6 +516,9 @@
 				font-weight: bold;
 				padding: 8px 10px;
 				border-radius: 8px;
+			}
+			#confirm-animal:hover {
+				color: var(--yellow-color);
 			}
 
 		/* #endregion animal choice */
@@ -561,6 +594,7 @@
                 flex-direction: row;
 				padding: 10px 16px;
 				border-bottom: 1px solid var(--brown-color);
+				align-items: center;
 			
 				position: relative;
 			}
@@ -568,7 +602,7 @@
 			/* Drag to resize corner */
 			#resize {
 				position: absolute;
-				height: 58px;
+				height: 59px;
 				width: 40px;
 				
 				font-size: 250%;
@@ -584,6 +618,8 @@
 				align-items: center;
 				justify-content: center;
 				cursor: grab;
+
+				transition: background-color 0.25s, color 0.25s;
 
                 top: 0px;
                 left: 0px;
@@ -627,6 +663,7 @@
 				height: 100%;
 				width: 100%;
 				transition: all 0.25s ease-in-out;
+				transform: scale(1.1);
 			}
 
 			#tools-button {
@@ -656,7 +693,8 @@
 				width: var(--symbol-background); height: var(--symbol-background);
 			
 				color: var(--brown-color);
-				transition: color 0.5s ease, transform 0.5s ease;
+				fill: var(--brown-color);
+				transition: color 0.5s ease, transform 0.5s ease, fill 0.5s ease;
 				will-change: transform;
 
 				font-size: var(--chat-buttons);
@@ -665,6 +703,7 @@
 			}
 			.return-chat:hover {
 				color: var(--purple-color);
+				fill: var(--purple-color);
 			}
 		
 			.button-row {
@@ -891,6 +930,9 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+		text-align: center;
+		gap: 20px;
+		
         z-index: 2000;
 		top: 60px;
         width: 100%;
@@ -903,6 +945,9 @@
         visibility: visible;
         opacity: 1;
     }
+	.refresh-confirmation b {
+		font-size: 0.9em;
+	}
     .refresh-confirmation button {
         margin: 5%;
         padding: 10px 25px;
@@ -913,6 +958,41 @@
     .refresh-confirmation button:hover {
         background-color: var(--purple-color);
         color: var(--yellow-color);
+    }
+
+	/* Start screen */
+    .start-screen {
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.95);
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        z-index: 900000;
+		top: 60px;
+        width: 100%;
+        height: calc(100% - 60px);
+		border-bottom-left-radius: 15px;
+		border-bottom-right-radius: 15px;
+    }
+    .start-screen p {
+        text-align: center;
+        text-wrap-style: balance;
+    }
+    .next-btn {
+        all: unset;
+        margin: 5%;
+        padding: 10px 25px;
+        background-color: var(--yellow-color);
+        color: var(--purple-color);
+        border-radius: 5px;
+    }
+    .next-btn:hover {
+        background-color: var(--purple-color);
+        color: var(--yellow-color);
+		cursor: pointer;
     }
 </style>
 
@@ -950,7 +1030,7 @@
 	// #####################
 
 	// unopened chat and opened chat
-	const unopenedChat = document.getElementById("unopened-chat")
+	const unopenedChat = document.getElementById("unopened-chat-icon")
 	const chatContainer = document.getElementById("chat-container")
 	const chatContent = document.getElementById("chat-content");
 
@@ -975,6 +1055,13 @@
 	const chatInput = document.getElementById("chat-input");
 	const messages = document.getElementById("messages")
 	const scrollToBottomButton = document.getElementById('scroll-to-bottom-button');
+
+	// start menu
+	const next = document.querySelector('.next-btn');
+    const startmenu = document.querySelector('.start-screen');
+
+	// extra
+	const descriptionImg = document.querySelector(".animal-description-img");
 
 	// animal images and descriptions
     const animalDict = {
@@ -1053,6 +1140,9 @@
 	const four = document.getElementById("animals-4rows")
 	const two = document.getElementById("animals-2rows")
 
+
+	setAnimalSize();
+	
 	// the IF statement determines whether to display the chatbot or not,
 	//  It will not display the chatbot on self-asessments inside the modules and can be edited to not display on specific urls in the website
 
@@ -1070,6 +1160,13 @@
 	// #####################
   	// ##### FUNCTIONS #####
 	// #####################
+
+	// StartScreen next button, deletes the menu
+    next.addEventListener('click', async e => {
+        startmenu.style.opacity = '0';
+        await sleep(250);
+        startmenu.remove();
+    })
 
 	function checkQuizState() { // we need to hide the chatbot when the user take a self-assessment so they can't ask for answers
           try {
@@ -1101,6 +1198,7 @@
 
 
 	// resize chatbot
+	const NEWanimalDescription = document.querySelector(".animal-description-container");
 	resize.addEventListener('mousedown', (mouseEvent) => {
 		mouseEvent.preventDefault();
 		
@@ -1139,10 +1237,16 @@
 					four.style.display = "none"
 					two.style.display = "flex"
 				}
+				if (NEWanimalDescription.classList.contains("active")) {
+					NEWanimalDescription.classList.remove("active");
+				}
 			} else if (newWidth + 90 < newHeight)  { // swap to 4 rows height bigger
 				if (four.style.display != "flex") {
-					four.style.display = "flex"
-					two.style.display = "none"
+					four.style.display = "none"
+					two.style.display = "flex"
+				}
+				if (!NEWanimalDescription.classList.contains("active")) {
+					NEWanimalDescription.classList.add("active");
 				}
 			}
 			setAnimalSize();
@@ -1175,15 +1279,41 @@
 
 	function setAnimalSize() {
 		// average of chatContainer width+height to for animal sizes
-		document.querySelectorAll(".animal").forEach(animal => {
-			animal.style.width = `${((chatContainer.offsetHeight + chatContainer.offsetWidth)/2)*0.19}px`;
-		});
+		const animaldestext = document.getElementById("animal-description");
+
+		const width = chatContainer.offsetWidth/5.5;
+		const height = chatContainer.offsetHeight/5.5;
+		
+		animaldestext.style.fontSize = `${Math.min(width, height)/7}px`;
+		
+			if (width <= height) {
+				document.querySelectorAll(".animal").forEach(animal => {
+					console.log("based on width");
+					animal.style.width = `${width}px`;
+					animal.style.height = `auto`;
+
+					descriptionImg.style.width = `${width}px`;
+					descriptionImg.style.height = `auto`;
+				});
+			} else {
+				document.querySelectorAll(".animal").forEach(animal => {
+					console.log("based on height");
+					animal.style.height = `${height}px`;
+					animal.style.width = `auto`;
+
+					descriptionImg.style.height = `${height}px`;
+					descriptionImg.style.width = `auto`;
+				});
+			}
+		
+
+
+		// document.querySelectorAll(".animal-row").forEach(row => {
+		// 	row.style.gap = `${chatContainer.offsetWidth/50}px`;
+		// 	console.log(`${row.style.gap} here is gap`)
+		// });
 	}
 
-	
-		
-	
-	
     function openAnimals() {
         animalChoice.classList.toggle("hidden");
         chatContent.classList.toggle("hidden");
@@ -1215,36 +1345,7 @@
       
 		// function was called from user selecting a money mindset animal
       	if (chatContent.classList.contains("hidden")) {
-
-			// sets animal that was chosen to the animal display in the chat menu
-			chosenAnimal.src = selectedAnimal.src
-
-			// setting custom placeholder input box based on animal
-			if (selectedAnimal.classList.contains("Squirrel")) {
-				chatInput.placeholder = "now where did I bury that..."
-				animal = "Squirrel"
-			} else if (selectedAnimal.classList.contains("Rabbit")) {
-				chatInput.placeholder = "lets go down a rabbit hole..."
-				animal = "Rabbit"
-			} else if (selectedAnimal.classList.contains("Octopus")) {
-				chatInput.placeholder = "where'd my 8th arm go..."
-				animal = "Octopus"
-			} else if (selectedAnimal.classList.contains("Panda")) {
-				chatInput.placeholder = "dreaming of bamboo..."
-				animal = "Panda"
-			} else if (selectedAnimal.classList.contains("Armadillo")) {
-				chatInput.placeholder = "no one can see me in my shell..."
-				animal = "Armadillo"
-			} else if (selectedAnimal.classList.contains("Poodle")) {
-				chatInput.placeholder = "where did that squirrel go..."
-				animal = "Poodle"
-			} else if (selectedAnimal.classList.contains("Owl")) {
-				chatInput.placeholder = "*adjusts tiny spectacles*..."
-				animal = "Owl"
-			} else if (selectedAnimal.classList.contains("Bee")) {
-				chatInput.placeholder = "bzz bzz bzzz..."
-				animal = "Bee"
-			}
+			changeAnimal(animalName.textContent);
 
 			// set animal interface to hide and chat interface to show
 			animalChoice.classList.add('hidden')
@@ -1254,16 +1355,45 @@
 			animalConfirmation.classList.toggle('hidden');
 			for (i=0; i < animals.length; i++) animals[i].classList.toggle("hidden");
 			
-
           	chatContent.classList.add('hidden')
         	animalChoice.classList.remove('hidden')
 			chatInput.focus()
         }
     }
 
-	// Return button for the animal personality screen
-	function chatReturn() {
-		
+	function changeAnimal(animal) {
+		// sets animal that was chosen to the animal display in the chat menu
+		chosenAnimal.src = selectedAnimal.src
+		// Change closed animal pfp
+		unopenedChat.src = selectedAnimal.src
+		// Change base description animal to current animal
+		descriptionImg.src = selectedAnimal.src
+		// setting custom placeholder input box based on animal
+		if (selectedAnimal.classList.contains("Squirrel")) {
+			chatInput.placeholder = "now where did I bury that..."
+			animal = "Squirrel"
+		} else if (selectedAnimal.classList.contains("Rabbit")) {
+			chatInput.placeholder = "lets go down a rabbit hole..."
+			animal = "Rabbit"
+		} else if (selectedAnimal.classList.contains("Octopus")) {
+			chatInput.placeholder = "where'd my 8th arm go..."
+			animal = "Octopus"
+		} else if (selectedAnimal.classList.contains("Panda")) {
+			chatInput.placeholder = "dreaming of bamboo..."
+			animal = "Panda"
+		} else if (selectedAnimal.classList.contains("Armadillo")) {
+			chatInput.placeholder = "no one can see me in my shell..."
+			animal = "Armadillo"
+		} else if (selectedAnimal.classList.contains("Poodle")) {
+			chatInput.placeholder = "where did that squirrel go..."
+			animal = "Poodle"
+		} else if (selectedAnimal.classList.contains("Owl")) {
+			chatInput.placeholder = "*adjusts tiny spectacles*..."
+			animal = "Owl"
+		} else if (selectedAnimal.classList.contains("Bee")) {
+			chatInput.placeholder = "bzz bzz bzzz..."
+			animal = "Bee"
+		}
 	}
   
 	// Opens/Closes the refresh screen
@@ -1275,7 +1405,7 @@
 	// resets chatbot deleting all messages, setting a new sessionId, and going back to animal choice menu
   	function resetChat() {
 		// show animal GUI hide chat interface
-		confirmAnimalSelection(document.getElementById("default-animal"));
+		//confirmAnimalSelection(document.getElementById("default-animal"));
 		
 		// set new sessionId
 		sessionId = crypto.randomUUID();
@@ -1523,9 +1653,9 @@
 			top: 33%;
 		}
 
-		.animal-row {
+		/* .animal-row {
 			gap: min(4vw, 3dvh);
-		}
+		} */
 
 		#chat-input {
 			font-size: 16px; /* prevents iOS auto-zoom on input focus */
@@ -1578,12 +1708,12 @@
 			// if in mobile mode and width+60 is bigger than height make 2 rows GUI show
 			if (window.innerWidth + 60 >= window.innerHeight) {
 				// swap to 2 rows
-				four.style.display = "none"
+				// four.style.display = "none"
 				two.style.display = "flex"
 			} else {
 				// swap to 4 rows
-				four.style.display = "flex"
-				two.style.display = "none"
+				// four.style.display = "flex"
+				two.style.display = "flex"
 			}
 		}
 	}
