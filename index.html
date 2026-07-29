@@ -108,10 +108,10 @@
 				</div>
 
 				<div class="animal-description-container">
-					<img class="animal-description-img" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/0e085720420940b17bffd4a3f0419cc1.png">
+					<img class="animal-description-img" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/fc03ee57461416c10e083865fcc3e6f4.png"">
 					<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px;">
-						<h1 id="animal-name">Panda</h1>
-						<p id="animal-description">The Panda is a gentle giant with a love for bamboo. They are known for their distinctive black and white fur and their calm demeanor.</p>
+						<h1 id="animal-name">Squirrel</h1>
+						<p id="animal-description">Focused on saving and security, squirrels might avoid taking necessary financial risks for growth.</p>
 						<button id="confirm-animal" onClick="confirmAnimalSelection()">Confirm</button>
 					</div>
 				</div>
@@ -1023,6 +1023,7 @@
 	const animalName = document.getElementById("animal-name");
 	const animalDescriptionImg = document.querySelector(".animal-description-img");
 	const animalDescription = document.getElementById("animal-description");
+	const confirmAnimal = document.getElementById("confirm-animal");
 
 
 	//resize
@@ -1209,12 +1210,12 @@
 			chatContainer.style.height = newHeight + 'px';
 
 			if (newWidth + 90  >= newHeight) {
-				if (animalDescriptionContaine.classList.contains("active")) {
-					animalDescriptionContaine.classList.remove("active");
+				if (animalDescriptionContainer.classList.contains("active")) {
+					animalDescriptionContainer.classList.remove("active");
 				}
 			} else if (newWidth + 90 < newHeight)  {
-				if (!animalDescriptionContaine.classList.contains("active")) {
-					animalDescriptionContaine.classList.add("active");
+				if (!animalDescriptionContainer.classList.contains("active")) {
+					animalDescriptionContainer.classList.add("active");
 				}
 			}
 			setAnimalSize();
@@ -1247,12 +1248,11 @@
 
 	function setAnimalSize() {
 		// average of chatContainer width+height to for animal sizes
-		const animaldestext = document.getElementById("animal-description");
 
 		const width = chatContainer.offsetWidth/5.5;
 		const height = chatContainer.offsetHeight/5.5;
 		
-		animaldestext.style.fontSize = `${Math.min(width, height)/7}px`;
+		animalDescription.style.fontSize = `${Math.min(width, height)/7}px`;
 		
 			if (width <= height) {
 				document.querySelectorAll(".animal").forEach(animal => {
@@ -1280,12 +1280,12 @@
 
 	function selectAnimal (element) {
 		const animalString = element.classList[1];
+		confirmAnimal.classList = '';
+		confirmAnimal.classList.add(animalString);
 
-		if (element.classList.contains("animal")) {
-			animalName.textContent = animalString;
-			animalDescription.textContent = descriptions[animalString];
-			animalDescriptionImg.src = animalDict[animalString][0];
-		}
+		animalName.textContent = animalString;
+		animalDescription.textContent = descriptions[animalString];
+		animalDescriptionImg.src = animalDict[animalString][0];
 	}
 
 	// NEED TO BE CHANGED TO FUNCTION WITH AN ANIMAL STRING NOT THE ELEMENT OBJECT
@@ -1293,7 +1293,7 @@
       
 		// function was called from user selecting a money mindset animal
       	if (chatContent.classList.contains("hidden")) {
-			changeAnimal(animalName.textContent);
+			changeAnimal(confirmAnimal.classList[0]);
 
 			// set animal interface to hide and chat interface to show
 			animalChoice.classList.add('hidden')
@@ -1308,36 +1308,36 @@
         }
     }
 
-	function changeAnimal(animal) {
+	function changeAnimal(selectedAnimal) {
 		// sets animal that was chosen to the animal display in the chat menu
-		chosenAnimal.src = selectedAnimal.src
+		chosenAnimal.src = animalDict[selectedAnimal][0];
 		// Change closed animal pfp
-		unopenedChat.src = selectedAnimal.src
+		unopenedChat.querySelector("img").src = animalDict[selectedAnimal][0];
 		// Change base description animal to current animal
-		animalDescriptionImg.src = selectedAnimal.src
+		animalDescriptionImg.src = animalDict[selectedAnimal][0];
 		// setting custom placeholder input box based on animal
-		if (selectedAnimal.classList.contains("Squirrel")) {
+		if (selectedAnimal == "Squirrel") {
 			chatInput.placeholder = "now where did I bury that..."
 			animal = "Squirrel"
-		} else if (selectedAnimal.classList.contains("Rabbit")) {
+		} else if (selectedAnimal == "Rabbit") {
 			chatInput.placeholder = "lets go down a rabbit hole..."
 			animal = "Rabbit"
-		} else if (selectedAnimal.classList.contains("Octopus")) {
+		} else if (selectedAnimal == "Octopus") {
 			chatInput.placeholder = "where'd my 8th arm go..."
 			animal = "Octopus"
-		} else if (selectedAnimal.classList.contains("Panda")) {
+		} else if (selectedAnimal == "Panda") {
 			chatInput.placeholder = "dreaming of bamboo..."
 			animal = "Panda"
-		} else if (selectedAnimal.classList.contains("Armadillo")) {
+		} else if (selectedAnimal == "Armadillo") {
 			chatInput.placeholder = "no one can see me in my shell..."
 			animal = "Armadillo"
-		} else if (selectedAnimal.classList.contains("Poodle")) {
+		} else if (selectedAnimal == "Poodle") {
 			chatInput.placeholder = "where did that squirrel go..."
 			animal = "Poodle"
-		} else if (selectedAnimal.classList.contains("Owl")) {
+		} else if (selectedAnimal == "Owl") {
 			chatInput.placeholder = "*adjusts tiny spectacles*..."
 			animal = "Owl"
-		} else if (selectedAnimal.classList.contains("Bee")) {
+		} else if (selectedAnimal == "Bee") {
 			chatInput.placeholder = "bzz bzz bzzz..."
 			animal = "Bee"
 		}
@@ -1595,10 +1595,6 @@
 			width: min(calc((35vw + 15dvh)/3), calc(42dvh - 30px), 20vw);
 			height: min(calc((35vw + 15dvh)/3), calc(42dvh - 30px), 20vw);
 		}
-
-		/* .animal-row {
-			gap: min(4vw, 3dvh);
-		} */
 
 		#chat-input {
 			font-size: 16px; /* prevents iOS auto-zoom on input focus */
