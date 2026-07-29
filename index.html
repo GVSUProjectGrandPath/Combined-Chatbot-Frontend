@@ -63,7 +63,7 @@
 			<h2 id="quiz-link">Don't know your Animal? Take the quiz <a href="https://quiz.rep4finlit.org/" target="_blank" style="text-decoration: underline; color: var(--purple-color);">here</a></h2>
       	</div>
 
-		<div id="animal-select-container-bigger">		
+		<div id="animal-select-container-bigger">
 			<!-- animals-4rows -->
 			<!-- Default animal display of 2 animals per row (alternate display is later with 2 rows of 4 animals) -->
 			<div id="animals-4rows" class="animals" style="display: none;">
@@ -88,7 +88,6 @@
 					<img class="animal Bee" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/5dcd3605e0edd7bf81cc0c85278560d3.png">
 				</div>
 			</div>
-			<!-- END animals-4rows -->
 
 			<!-- animal-2rows -->
 			<!-- Displays when the user 1. has a smaller screen and 2. has more width than height on said screen -->
@@ -127,7 +126,7 @@
 
 	<div class="start-screen">
       <p>Hi! I'm Rep4®bot! I am here to help with financial literacy questions! Please refrain from giving us any FERPA related informaton!</p>
-      <button class="next-btn">next</button>
+      <button class="next-btn">acknowledge</button>
     </div>
 
 	<div class="refresh-confirmation">
@@ -436,26 +435,6 @@
 			.animal.active {
 				transform: scale(1.2);
 				border: 3px solid var(--yellow-color);
-			}
-
-			#animal-confirmation {
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: center;
-
-				font-size: 1.1em;
-				width: 80%;
-
-				position: absolute;
-				top: 26%;
-				left: 50%;
-				transform: translateX(-50%);
-				transition: opacity 350ms ease;
-			}
-
-			#selected-animal {
-				z-index: 1;
 			}
 
 			#animal-select-container-bigger {
@@ -1036,14 +1015,15 @@
 
 	// animal choice variables
 	const animals = document.getElementsByClassName("animal");
-	const selectedAnimal = document.getElementById("selected-animal");
 	const animalChoice = document.getElementById("animal-choice");
 	const chosenAnimal = document.getElementById("chosen-animal")
 
 	// animal confirmation elements
-	const animalConfirmation = document.getElementById("animal-confirmation");
+	const animalDescriptionContainer = document.querySelector(".animal-description-container");
 	const animalName = document.getElementById("animal-name");
+	const animalDescriptionImg = document.querySelector(".animal-description-img");
 	const animalDescription = document.getElementById("animal-description");
+
 
 	//resize
 	const resize = document.getElementById("resize");
@@ -1059,9 +1039,6 @@
 	// start menu
 	const next = document.querySelector('.next-btn');
     const startmenu = document.querySelector('.start-screen');
-
-	// extra
-	const descriptionImg = document.querySelector(".animal-description-img");
 
 	// animal images and descriptions
     const animalDict = {
@@ -1198,7 +1175,6 @@
 
 
 	// resize chatbot
-	const NEWanimalDescription = document.querySelector(".animal-description-container");
 	resize.addEventListener('mousedown', (mouseEvent) => {
 		mouseEvent.preventDefault();
 		
@@ -1232,21 +1208,13 @@
 			chatContainer.style.width = newWidth + 'px'; 
 			chatContainer.style.height = newHeight + 'px';
 
-			if (newWidth + 90  >= newHeight) { // swap to 2 rows width bigger
-				if (four.style.display != "none"){
-					four.style.display = "none"
-					two.style.display = "flex"
+			if (newWidth + 90  >= newHeight) {
+				if (animalDescriptionContaine.classList.contains("active")) {
+					animalDescriptionContaine.classList.remove("active");
 				}
-				if (NEWanimalDescription.classList.contains("active")) {
-					NEWanimalDescription.classList.remove("active");
-				}
-			} else if (newWidth + 90 < newHeight)  { // swap to 4 rows height bigger
-				if (four.style.display != "flex") {
-					four.style.display = "none"
-					two.style.display = "flex"
-				}
-				if (!NEWanimalDescription.classList.contains("active")) {
-					NEWanimalDescription.classList.add("active");
+			} else if (newWidth + 90 < newHeight)  {
+				if (!animalDescriptionContaine.classList.contains("active")) {
+					animalDescriptionContaine.classList.add("active");
 				}
 			}
 			setAnimalSize();
@@ -1288,56 +1256,36 @@
 		
 			if (width <= height) {
 				document.querySelectorAll(".animal").forEach(animal => {
-					console.log("based on width");
 					animal.style.width = `${width}px`;
 					animal.style.height = `auto`;
 
-					descriptionImg.style.width = `${width}px`;
-					descriptionImg.style.height = `auto`;
+					animalDescriptionImg.style.width = `${width}px`;
+					animalDescriptionImg.style.height = `auto`;
 				});
 			} else {
 				document.querySelectorAll(".animal").forEach(animal => {
-					console.log("based on height");
 					animal.style.height = `${height}px`;
 					animal.style.width = `auto`;
 
-					descriptionImg.style.height = `${height}px`;
-					descriptionImg.style.width = `auto`;
+					animalDescriptionImg.style.height = `${height}px`;
+					animalDescriptionImg.style.width = `auto`;
 				});
 			}
-		
-
-
-		// document.querySelectorAll(".animal-row").forEach(row => {
-		// 	row.style.gap = `${chatContainer.offsetWidth/50}px`;
-		// 	console.log(`${row.style.gap} here is gap`)
-		// });
 	}
 
     function openAnimals() {
         animalChoice.classList.toggle("hidden");
         chatContent.classList.toggle("hidden");
-		if (chatContent.classList.contains("hidden")) {
-			
-		}
     }
 
 	function selectAnimal (element) {
-		// hide all animal that weren't chosen
 		const animalString = element.classList[1];
-		selectedAnimal.className = "";
 
 		if (element.classList.contains("animal")) {
-			selectedAnimal.src = element.src;
-			selectedAnimal.classList.toggle(animalString);
 			animalName.textContent = animalString;
 			animalDescription.textContent = descriptions[animalString];
+			animalDescriptionImg.src = animalDict[animalString][0];
 		}
-
-		for (i=0; i < animals.length; i++) {
-			animals[i].classList.toggle("hidden");
-		}
-		animalConfirmation.classList.toggle("hidden");
 	}
 
 	// NEED TO BE CHANGED TO FUNCTION WITH AN ANIMAL STRING NOT THE ELEMENT OBJECT
@@ -1352,7 +1300,6 @@
 			chatContent.classList.remove('hidden')
 			chatInput.focus()
         } else { // function was called by user resetting chat no need to set animal as user will be chosing a new animal
-			animalConfirmation.classList.toggle('hidden');
 			for (i=0; i < animals.length; i++) animals[i].classList.toggle("hidden");
 			
           	chatContent.classList.add('hidden')
@@ -1367,7 +1314,7 @@
 		// Change closed animal pfp
 		unopenedChat.src = selectedAnimal.src
 		// Change base description animal to current animal
-		descriptionImg.src = selectedAnimal.src
+		animalDescriptionImg.src = selectedAnimal.src
 		// setting custom placeholder input box based on animal
 		if (selectedAnimal.classList.contains("Squirrel")) {
 			chatInput.placeholder = "now where did I bury that..."
@@ -1647,10 +1594,6 @@
 		#animals-2rows .animal {
 			width: min(calc((35vw + 15dvh)/3), calc(42dvh - 30px), 20vw);
 			height: min(calc((35vw + 15dvh)/3), calc(42dvh - 30px), 20vw);
-		}
-
-		#animal-confirmation {
-			top: 33%;
 		}
 
 		/* .animal-row {
