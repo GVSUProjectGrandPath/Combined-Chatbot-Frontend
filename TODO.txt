@@ -1,6 +1,4 @@
-- On enter, choose a random animal then select it with the cahnge animal functionn
-
-- Change redo personality menu (should have no confirm menu)
+- On enter, choose a random animal then select it with the change animal function
 
 - Have the main screen animal icon be used better (position it better)
 - Eventually get new faces for every single animal
@@ -15,6 +13,8 @@
 
 - add the warmup chat
 
+- when user expands height and shortens width in animal change menu make animals display as 4 rows
+
 FINISHED:
 - change to linear gradient on message menu
 - start on chat menu
@@ -22,3 +22,4 @@ FINISHED:
 - add a back button for the choose personality feature
 - add a ferpa pop up on startup
 - Make resize icon larger and not position absolute like Diego design (change icon???)
+- Change redo personality menu (should have no confirm menu)

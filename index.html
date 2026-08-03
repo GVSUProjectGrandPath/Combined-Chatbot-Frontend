@@ -63,7 +63,7 @@
 			<h2 id="quiz-link">Don't know your Animal? Take the quiz <a href="https://quiz.rep4finlit.org/" target="_blank" style="text-decoration: underline; color: var(--purple-color);">here</a></h2>
       	</div>
 
-		<div id="animal-select-container-bigger">
+		<div id="animal-select-container">
 			<!-- animals-4rows -->
 			<!-- Default animal display of 2 animals per row (alternate display is later with 2 rows of 4 animals) -->
 			<div id="animals-4rows" class="animals" style="display: none;">
@@ -92,7 +92,7 @@
 			<!-- animal-2rows -->
 			<!-- Displays when the user 1. has a smaller screen and 2. has more width than height on said screen -->
 				<!-- It makes the animal photos into 2 rows as appose to 4 rows which utilizes width more than height -->	 
-			<div id="animals-2rows" class="animals" style="display: flex">
+			<div id="animals-2rows" class="animals">
 				<div class="animal-row">
 					<img class="animal Squirrel" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/fc03ee57461416c10e083865fcc3e6f4.png">
 					<img class="animal Octopus" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/5c0a7d7bd7e10ebd31492c6c00119505.png">
@@ -106,15 +106,13 @@
 					<img class="animal Poodle" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/f3f3b8d63ca3eee73c0782abbe2f25c0.png">
 					<img class="animal Bee" onClick="selectAnimal(this)" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/5dcd3605e0edd7bf81cc0c85278560d3.png">
 				</div>
+			</div>
 
-				<div class="animal-description-container">
-					<img class="animal-description-img" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/fc03ee57461416c10e083865fcc3e6f4.png"">
-					<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px;">
-						<h1 id="animal-name">Squirrel</h1>
-						<p id="animal-description">Focused on saving and security, squirrels might avoid taking necessary financial risks for growth.</p>
-						<button id="confirm-animal" onClick="confirmAnimalSelection()">Confirm</button>
-					</div>
-				</div>
+			<div class="animal-description-container">
+				<img class="animal-description-img" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/fc03ee57461416c10e083865fcc3e6f4.png"">
+				<h1 id="animal-name">Squirrel</h1>
+				<p id="animal-description">Focused on saving and security, squirrels might avoid taking necessary financial risks for growth.</p>
+				<button id="confirm-animal" onClick="confirmAnimalSelection()">Confirm</button>
 			</div>
 
 		<!-- END animal-2rows -->
@@ -126,7 +124,7 @@
 
 	<div class="start-screen">
       <p>Hi! I'm Rep4®bot! I am here to help with financial literacy questions! Please refrain from giving us any FERPA related informaton!</p>
-      <button class="next-btn">acknowledge</button>
+      <button class="next-btn">Acknowledge</button>
     </div>
 
 	<div class="refresh-confirmation">
@@ -408,9 +406,11 @@
 		        width: 100%;
 				margin-top: 15px;
 			}
-		
-			#animals-2rows { 
-				display: none;
+
+			#animals-2rows {
+				display: flex;
+				height: auto;
+				width: auto;
 			}
 
 			.animal-row {
@@ -423,8 +423,7 @@
 			.animal {
 				transition: transform 0.5s ease, opacity 0.5s ease;
 				will-change: transform;
-
-				/* aspect-ratio: 1/1 !important; */
+				min-width: 85px;
 			}
 		
 			.animal:hover {
@@ -437,48 +436,35 @@
 				border: 3px solid var(--yellow-color);
 			}
 
-			#animal-select-container-bigger {
+			#animal-select-container {
 				background: radial-gradient(circle, white 0%, var(--purple-color));
 				height: 100%;
 				width: 100%;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
 			}
 
 			.animal-description-container {
-				height: 100%;
-				margin: 15px;
-				margin-bottom: 30px;
-				border: 3px solid var(--blue-color);
-				border-radius: 15px;
-
-				background-color: rgba(255, 255, 255, 0.6);
-				padding: 30px;
 				display: flex;
-				flex-direction: row;
-				align-items: center;
-				gap: 5px;
-			}
-			.animal-description-container.active {
 				flex-direction: column;
-			}
-			.animal-description-img {
-				width: 100px;
-				height: auto;
+				align-items: center;
+				background-color: rgb(255, 255, 255, 0.6);
+				border-radius: 15px;
+				margin: 10px;
+				padding: 5px;
 			}
 
 			#animal-name {
 				font-size: var(--header-or-symbol);
 				color: var(--purple-color);
 				font-weight: bold;
+				line-height: 0.9;
 			}
 
 			#animal-description {
 				color: var(--brown-color);
 				text-align: center;
-			}
-
-			#animal-description-container .button-row {
-				justify-content: space-between;
-				width: 50%;
 			}
 
 			#back-button {
@@ -590,13 +576,13 @@
 				background-color: var(--yellow-color);
 				box-sizing: border-box;
 				border-top-left-radius: 15px;
+				border-bottom-right-radius: 15px;
 				border-bottom: solid var(brown-color) 1px;
 				
 				text-align: center;
 				text-justify: distribute;
 				align-items: center;
 				justify-content: center;
-				cursor: grab;
 
 				transition: background-color 0.25s, color 0.25s;
 
@@ -607,9 +593,7 @@
 			#resize:hover {
 				background-color: var(--purple-color);
 				color: var(--yellow-color);
-			}
-			#resize.active {
-				cursor: grabbing;
+				cursor: grab;
 			}
 			
             .symbol {
@@ -1019,7 +1003,6 @@
 	const chosenAnimal = document.getElementById("chosen-animal")
 
 	// animal confirmation elements
-	const animalDescriptionContainer = document.querySelector(".animal-description-container");
 	const animalName = document.getElementById("animal-name");
 	const animalDescriptionImg = document.querySelector(".animal-description-img");
 	const animalDescription = document.getElementById("animal-description");
@@ -1104,7 +1087,7 @@
     };
 
 	const descriptions = {
-        'Armadillo' : 'A cautious personality that protects itself from financial challenges but may struggle with debt due to avoidance of financial management.',
+        'Armadillo' : 'Protects itself from financial challenges but may struggle with debt due to avoidance of financial management.',
         'Bee' : 'Highly competitive and hardworking, bees focus on wealth accumulation but risk burnout.',
         'Octopus' : 'Curious and impulsive, this personality is skilled at bargain hunting but can be distracted by sales.',
         'Owl' : 'Strategic and patient, owls prioritize long-term gains but must manage market volatility.',
@@ -1178,6 +1161,7 @@
 	// resize chatbot
 	resize.addEventListener('mousedown', (mouseEvent) => {
 		mouseEvent.preventDefault();
+		resize.style.cursor = "grabbing";
 		
 		// borders
 		let minWidth = chatContainer.style.minWidth ? parseInt(chatContainer.style.minWidth) : 360;
@@ -1209,20 +1193,14 @@
 			chatContainer.style.width = newWidth + 'px'; 
 			chatContainer.style.height = newHeight + 'px';
 
-			if (newWidth + 90  >= newHeight) {
-				if (animalDescriptionContainer.classList.contains("active")) {
-					animalDescriptionContainer.classList.remove("active");
-				}
-			} else if (newWidth + 90 < newHeight)  {
-				if (!animalDescriptionContainer.classList.contains("active")) {
-					animalDescriptionContainer.classList.add("active");
-				}
-			}
+			console.log(newWidth, newHeight)
+
 			setAnimalSize();
 		};
 			
 
 		const stopDrag = () => {
+			resize.style.cursor = "grab";
             window.removeEventListener('mousemove', drag);
             window.removeEventListener('mouseup', stopDrag);
 
@@ -1249,10 +1227,14 @@
 	function setAnimalSize() {
 		// average of chatContainer width+height to for animal sizes
 
-		const width = chatContainer.offsetWidth/5.5;
-		const height = chatContainer.offsetHeight/5.5;
-		
-		animalDescription.style.fontSize = `${Math.min(width, height)/7}px`;
+		const width = chatContainer.offsetWidth/6;
+		const height = chatContainer.offsetHeight/6;
+
+		// sizing animal selection menu
+		animalName.style.fontSize = Math.min(Math.min(width, height)/3, 30) + 'px'
+		animalDescription.style.fontSize =  Math.min(Math.min(width, height)/5.7, 22) + 'px'
+		if (chatContainer.getBoundingClientRect().width < window.innerWidth * 0.3) {animalDescription.style.fontSize = Math.max(Math.min(Math.min(width, height)/5.7, 22), 15) + 'px'}
+		confirmAnimal.style.fontSize = Math.min(Math.min(width, height)/5.5, 22) + 'px'
 		
 			if (width <= height) {
 				document.querySelectorAll(".animal").forEach(animal => {
