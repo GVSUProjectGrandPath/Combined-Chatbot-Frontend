@@ -1,11 +1,7 @@
-- On enter, choose a random animal then select it with the change animal function
-
 - Have the main screen animal icon be used better (position it better)
 - Eventually get new faces for every single animal
 
 - have the refresh screen and choose personality button not be able to be active at the same time (small bug)
-
-- have the refresh chat screen buttons and text be able to scale 
 
 - Change animal function (changes pfps, the selected animal in the change animal screen, other stuff)
 
@@ -13,9 +9,10 @@
 
 - add the warmup chat
 
-- when user expands height and shortens width in animal change menu make animals display as 4 rows
+- when user expands height and shortens width in animal change menu make animals display as 4 rows (maybe add this maybe not)
 
 FINISHED:
+- On enter, choose a random animal then select it with the change animal function
 - change to linear gradient on message menu
 - start on chat menu
 - add a new button to change animal personality (arrow button is to reset all of chat) (make sure to make button very clear of what the button does)
@@ -23,3 +20,4 @@ FINISHED:
 - add a ferpa pop up on startup
 - Make resize icon larger and not position absolute like Diego design (change icon???)
 - Change redo personality menu (should have no confirm menu)
+- have the refresh chat screen buttons and text be able to scale 
