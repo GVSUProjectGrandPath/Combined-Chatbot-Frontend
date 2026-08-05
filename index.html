@@ -1102,7 +1102,7 @@
 	const two = document.getElementById("animals-2rows")
 
 
-	setAnimalSize();
+	animalSizing();
 	
 	// the IF statement determines whether to display the chatbot or not,
 	//  It will not display the chatbot on self-asessments inside the modules and can be edited to not display on specific urls in the website
@@ -1116,8 +1116,12 @@
         setInterval(checkQuizState, 1000); //check periodically because the url does not change in the course when user enters the quiz
       }
     }
-  
 
+	// set random animal REPLACE with grabbing user's animal if possible
+	let randomAnimal = Object.keys(descriptions)[Math.floor(Math.random() * (7 - 0 + 1)) + 0];
+	changeAnimal(randomAnimal);
+	
+  
 	// #####################
   	// ##### FUNCTIONS #####
 	// #####################
@@ -1195,7 +1199,7 @@
 
 			console.log(newWidth, newHeight)
 
-			setAnimalSize();
+			animalSizing();
 		};
 			
 
@@ -1224,17 +1228,25 @@
         }
     }
 
-	function setAnimalSize() {
+	function animalSizing() {
 		// average of chatContainer width+height to for animal sizes
 
 		const width = chatContainer.offsetWidth/6;
 		const height = chatContainer.offsetHeight/6;
 
 		// sizing animal selection menu
-		animalName.style.fontSize = Math.min(Math.min(width, height)/3, 30) + 'px'
-		animalDescription.style.fontSize =  Math.min(Math.min(width, height)/5.7, 22) + 'px'
-		if (chatContainer.getBoundingClientRect().width < window.innerWidth * 0.3) {animalDescription.style.fontSize = Math.max(Math.min(Math.min(width, height)/5.7, 22), 15) + 'px'}
+		animalName.style.fontSize = Math.min(Math.min(width, height)/2.5, 30) + 'px' // sets size of animalName based on chatbot size, if larger than 30px it defualts to 30
+		animalDescription.style.fontSize =  Math.min(Math.min(width, height)/5.7, 22) + 'px' // sets size of animalDescription based on chatbot size, if larger than 22px it defualts to 22
 		confirmAnimal.style.fontSize = Math.min(Math.min(width, height)/5.5, 22) + 'px'
+
+		// when the chatbot is really small we have room for bigger text becuase the animal photos get smaller
+		if (chatContainer.getBoundingClientRect().width < 500) {
+			animalName.style.fontSize = Math.max(Math.min(width, height)/2.5, 26) + 'px'
+			animalDescription.style.fontSize = Math.max((Math.min(width, height)/5.7), 18) + 'px'
+			confirmAnimal.style.fontSize = Math.max(Math.min(width, height)/5.5, 18) + 'px'
+		}
+
+		// window.innerWidth * 0.4
 		
 			if (width <= height) {
 				document.querySelectorAll(".animal").forEach(animal => {
@@ -1297,6 +1309,10 @@
 		unopenedChat.querySelector("img").src = animalDict[selectedAnimal][0];
 		// Change base description animal to current animal
 		animalDescriptionImg.src = animalDict[selectedAnimal][0];
+		// Change animal name for confirm menu
+		animalDescription.textContent = descriptions[selectedAnimal];
+		// Change animal description for confirm menu
+		animalName.textContent = selectedAnimal;
 		// setting custom placeholder input box based on animal
 		if (selectedAnimal == "Squirrel") {
 			chatInput.placeholder = "now where did I bury that..."
@@ -1604,7 +1620,7 @@
 		const isMobileMode = window.matchMedia('(max-width: calc(600px / 0.9)), (max-height: calc(600px / 0.95))').matches
 
 		// average of chatContainer width+height to for animal sizes
-		setAnimalSize();
+		animalSizing();
 
 		if (!isMobileMode) {
 			resize.style.display = "block"
