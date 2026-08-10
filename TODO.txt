@@ -1,15 +1,18 @@
 - Have the main screen animal icon be used better (position it better)
-- Eventually get new faces for every single animal
 
-- have the refresh screen and choose personality button not be able to be active at the same time (small bug)
-
-- Change animal function (changes pfps, the selected animal in the change animal screen, other stuff)
-
-- put the rows and desscription in the same container, have their hieghts be defined in percents
+- Eventually get new faces for every single animal (CONTACT GRAPHIC DESIGN)
 
 - add the warmup chat
 
 - when user expands height and shortens width in animal change menu make animals display as 4 rows (maybe add this maybe not)
+
+- BUG: when token streaming was implemented animal emotions broke. it triggers an animal emotion but does not revert back to the original image
+
+- restyle links for chat messages (they were previously styled for blue background now it looks bad with a white background)
+
+- BUG: scroll down button seems to have broken (button that would appear when user is scrolled up a lot and when clicked scrolls down)
+
+- BUG: logo on top left in chatbot looks bad for some reason the brown text is smaller this is not an issue when looking at it localy something with learnworlds is the issue
 
 FINISHED:
 - On enter, choose a random animal then select it with the change animal function
@@ -21,3 +24,4 @@ FINISHED:
 - Make resize icon larger and not position absolute like Diego design (change icon???)
 - Change redo personality menu (should have no confirm menu)
 - have the refresh chat screen buttons and text be able to scale 
+- Change animal function (changes pfps, the selected animal in the change animal screen, other stuff)

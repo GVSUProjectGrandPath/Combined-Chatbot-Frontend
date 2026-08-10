@@ -26,16 +26,7 @@
 	<!-- Standard Rep4FinLit Poppins font -->
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 <!-- END IMPORTS -->
-
-<!-- unopened-chat-icon -->
-<!-- <button id="unopened-chat-icon" class="hidden" onClick = "chatBot()">
-	<div id="message-symbol" style="width: 44px; height: 32px; background-color: white; border-radius: 8px; padding: 0; margin: 0; display: flex; justify-content: center; align-items: center; gap: 2px;">
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-  	</div>
-    <div id="message-symbol-tail" style="position: absolute; height: 10px; width: 8px; border-bottom-right-radius: 100%; background-color: white; bottom: 20px; left: 25px;"></div>
-</button> -->
+ 
 <!-- Diego's Version -->
 <button id="unopened-chat-icon" class="hidden" onClick = "chatBot()">
 	<img src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/fc03ee57461416c10e083865fcc3e6f4.png">
@@ -166,7 +157,7 @@
       	<!-- messages -->
 		<div id="messages-container">
 			<div id="messages">
-				<img id="chosen-animal" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/fc03ee57461416c10e083865fcc3e6f4.png"> <!-- putting chosen animal in the messages div was just the best location has nothing to do with being a message -->
+				<img id="chosen-animal" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/fc03ee57461416c10e083865fcc3e6f4.png" style="display: none;"> <!-- putting chosen animal in the messages div was just the best location has nothing to do with being a message -->
 
 				<!-- message divs will be added when the user sends a message -->
 				<div id="starting-message" class="message bot">Hi! I'm Rep4®FinLit Bot, your financial literacy assistant. You can chat with me about anything financial related and I will respond with trusted information from our learning modules. The navigation bar you see above you can change your money mindset animal, reset the chat, and access our full screen chatbot!</div>
@@ -178,9 +169,13 @@
       	<button id="scroll-to-bottom-button" onClick="scrollToBottom()"><i class="ph-bold ph-arrow-down"></i></button>
         
       	<!-- input menu -->
-    	<div id="input-container">
-      		<textarea id="chat-input" placeholder="Ask anything..."></textarea> <!-- Ask anything is replaced with animal specific messages-->
-          	<button id="send-button" onClick="sendMessage(event)">Send <i class="ph-bold ph-paper-plane-right"></i></button>
+    	<div id="bottom-container">
+			<div id="input-container">
+				<textarea id="chat-input" placeholder="Ask anything..."></textarea><!-- Ask anything is replaced with animal specific messages-->
+				<button id="send-button" onClick="sendMessage(event)"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none" /><path fill="currentColor" d="M18.815 3.585c.996-.36 1.96.604 1.6 1.6l-5.646 15.61c-.361 1-1.725 1.121-2.257.202l-2.982-5.15a1 1 0 0 0 .177-.139l5-5a1 1 0 0 0-1.414-1.414l-5 5a1 1 0 0 0-.14.176l-5.15-2.982c-.92-.532-.798-1.895.201-2.257z" /></svg></button>
+			</div>
+			<img id="chat-animal" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/fc03ee57461416c10e083865fcc3e6f4.png">
+          	<!-- <button id="send-button" onClick="sendMessage(event)"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none" /><path fill="currentColor" d="M18.815 3.585c.996-.36 1.96.604 1.6 1.6l-5.646 15.61c-.361 1-1.725 1.121-2.257.202l-2.982-5.15a1 1 0 0 0 .177-.139l5-5a1 1 0 0 0-1.414-1.414l-5 5a1 1 0 0 0-.14.176l-5.15-2.982c-.92-.532-.798-1.895.201-2.257z" /></svg></button> -->
     	</div>
       	<!-- END input menu -->
 
@@ -620,9 +615,6 @@
 				transform: scale(1.1);
             }
 
-            #change-animal {
-                /* background-color: var(--brown-color); */
-            }
 			#change-animal-icon {
 				height: 100%;
 				width: 100%;
@@ -691,6 +683,15 @@
 			align-items: flex-start;
 		}
 
+		#messages-container::-webkit-scrollbar-track {
+  			background: transparent;
+		}
+
+		#messages-container {
+  			scrollbar-width: thin;
+  			scrollbar-color: rgba(0,0,0,0.25) transparent;
+		}
+
 			#messages {
 				width: 98%;
 				min-height: 0;
@@ -709,7 +710,7 @@
 			*/
 			.message {
 				max-width: 75%;
-				padding: 10px 10px;
+				padding: 8px 8px;
 				border-radius: 10px;
 				margin: 0px 10px;
 				margin-top: 6px;
@@ -809,39 +810,67 @@
 		}
 	
 		/* #region input menu */
-		#input-container {
+		#bottom-container {
 			margin: 0px 0px;
 			margin-bottom: 10px;
-			width: 95%;
+			width: 97%;
 			align-content: flex-start;
 			justify-content: space-between;
 			
 			display: flex;
 			align-items: center;
-			gap: 8px;
+			justify-content: space-between;
 			
 			padding-top: 1px;
+			gap: 5px;
+		}
+
+		#input-container {
+			padding: 8px;
+			/* padding-left: 12px; */
+			flex: 1;
+			border: 2px solid var(--brown-color);
+			background-color: white;
+			border-radius: 20px;
+			
+			transition: transform 0.5s ease, border 0.25s ease;
+			will-change: transform;
+
+			display: flex;
+			flex-direction: row;
+
+			align-items: flex-start;
+			justify-content: flex-end;
+		}
+
+		#input-container:focus-within {
+			border-color: var(--purple-color);
 		}
 		
 		#chat-input {
-			padding: 8px 12px;
-			flex: 1;
+			background-color: transparent;
+			border: none;
 			outline: none;
-			border: 2px solid var(--brown-color);
-			border-radius: 20px;
-              
-			box-sizing: border-box;
+
 			min-height: 38px;
 			max-height: 110px;
 			height: auto;
 			line-height: 20px;
-			resize: none;
 			overflow-y: auto;
-			display: block;
-			margin: 0;
-			
-			transition: transform 0.5s ease, border 0.25s ease;
-			will-change: transform;
+			resize: none;
+			width: 100%;
+
+			/* fire fox scroll bar sizing */
+			scrollbar-width: thin;
+  			scrollbar-color: rgba(0,0,0,0.25) transparent;
+
+			min-width: 0;
+			margin-right: 8px;
+		}
+
+		/* other browsers scroll bar sizing */
+		#chat-input::-webkit-scrollbar-track {
+  			background: transparent;
 		}
 
 		#chat-input::placeholder {
@@ -849,34 +878,38 @@
 			line-height: 20px;
 		}
 
-		#chat-input:focus {
-			/* outline: solid var(--purple-color) 2px; */
-			border: solid 2px var(--purple-color);
-			/* transform: scale(1.0125); */
-		}
-
 		#send-button {
-			background-color: var(--yellow-color);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			align-self: flex-end;
+
+			font-size: 1.5em;
 			color: var(--brown-color);
 			font-weight: 800;
-			border: 2px solid var(--brown-color);
-			border-radius: 20px;
-			padding: 0 12px;
-			font-size: 1em;
-			height: 40px;
 			
+			background-color: var(--yellow-color);
+			border: 2px solid var(--brown-color);
+			border-radius: 50%;
+			padding: 8px;
+			aspect-ratio: 1/1;
+
 			transition: transform 0.5s ease;
 			will-change: transform;
+
+			flex-shrink: 0;
 		}
 		
 		#send-button:hover {
 			cursor: pointer;
 			transform: scale(1.05);
 		}
-  
-  		#send-button i {
-  			font-weight: bold;
-  		}
+
+		#chat-animal {
+			width: 60px; height: 60px;
+		}
+
 		/* #endregion input menu */
   
 	/* ######################### */ 
@@ -1035,6 +1068,8 @@
 	// start menu
 	const next = document.querySelector('.next-btn');
     const startmenu = document.querySelector('.start-screen');
+
+	const chatAnimal = document.getElementById("chat-animal");
 
 	// animal images and descriptions
     const animalDict = {
@@ -1325,6 +1360,8 @@
 		animalDescription.textContent = descriptions[selectedAnimal];
 		// Change animal description for confirm menu
 		animalName.textContent = selectedAnimal;
+
+		chatAnimal.src = animalDict[selectedAnimal][0];
 		// setting custom placeholder input box based on animal
 		if (selectedAnimal == "Squirrel") {
 			chatInput.placeholder = "now where did I bury that..."
@@ -1396,7 +1433,8 @@
 			if (text == loadingMessage) {
 				const bubble = document.createElement("div")
         		bubble.classList.add("message", sender)
-				bubble.innerHTML = text
+				bubble.innerHTML = text;
+				bubble.style.position = "relative";
 
 				// get random animal expression
 				chosenAnimal.src = animalDict[animal][Math.floor(Math.random() * 4) + 1];
@@ -1437,8 +1475,8 @@
 
 	// updates scroll to bottom button based on the height of the input box
 	function updateScrollButtonPosition() {
-		const inputContainer = document.getElementById("input-container");
-		scrollToBottomButton.style.bottom = (inputContainer.offsetHeight + 18) + "px";
+		const bottomContainer = document.getElementById("bottom-container");
+		scrollToBottomButton.style.bottom = (bottomContainer.offsetHeight + 18) + "px";
 	}
 
 	// calls showScrollBottomButton whenever user scroll in order to accurately display the button when the user is scrolled high up
@@ -1505,6 +1543,9 @@
 				let displayedWordCount = 0; // ammount of words displayed from chunkedResponse
 				let fetchDone = false; // boolean to determine when token streaming is done
 
+				// inline the image directly in the bubble's HTML
+				bubble.innerHTML = `<img src="${animalDict[animal][0]}" style="position:absolute; top:-15px; left:-15px; width:30px; height:auto;">${loadingMessage}`;
+
 				// interval displays words one-at-a-time so the user sees a typewriter effect
 				// runs independently of the fetch so streaming can happen at full speed in the background
 				const wordInterval = setInterval(() => {
@@ -1513,13 +1554,13 @@
 					const words = chunkedResponse.split(" ");
 					if (displayedWordCount < words.length) {
 						displayedWordCount++;
-						bubble.innerHTML = marked.parse(words.slice(0, displayedWordCount).join(" ") + ' █');
+						bubble.innerHTML = `<img src="${animalDict[animal][0]}" style="position:absolute;top:-15px;left:-15px;width:30px;height:auto;">${marked.parse(words.slice(0, displayedWordCount).join(" ") + ' █')}`;
 						showScrollBottomButton();
 					}
 					// only clear interval when fetch is done AND all words have been shown
 					if (fetchDone && displayedWordCount >= words.length) {
 						clearInterval(wordInterval);
-						bubble.innerHTML = marked.parse(chunkedResponse);
+						bubble.innerHTML = `<img src="${animalDict[animal][0]}" style="position:absolute;top:-15px;left:-15px;width:30px;height:auto;">${marked.parse(chunkedResponse)}`;
 					}
 				}, 65); // 65ms interval between words
 
@@ -1539,6 +1580,8 @@
 					if (!reader) return;
 
 					let buffer = ""; // holds partial line leftover between reads (SSE lines may split across chunks)
+
+					
 
 					while (true) {
 						const { value, done } = await reader.read();
