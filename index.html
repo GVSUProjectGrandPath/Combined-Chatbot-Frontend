@@ -27,7 +27,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 <!-- END IMPORTS -->
  
-<!-- Diego's Version -->
+<!-- unopened-chat-icon-->
 <button id="unopened-chat-icon" class="hidden" onClick = "chatBot()">
 	<img src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/fc03ee57461416c10e083865fcc3e6f4.png">
 </button>
@@ -160,7 +160,7 @@
 				<img id="chosen-animal" src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/fc03ee57461416c10e083865fcc3e6f4.png" style="display: none;"> <!-- putting chosen animal in the messages div was just the best location has nothing to do with being a message -->
 
 				<!-- message divs will be added when the user sends a message -->
-				<div id="starting-message" class="message bot">Hi! I'm Rep4®FinLit Bot, your financial literacy assistant. You can chat with me about anything financial related and I will respond with trusted information from our learning modules. The navigation bar you see above you can change your money mindset animal, reset the chat, and access our full screen chatbot!</div>
+				<div id="starting-message" class="message bot" style="padding: 8px">Hi! I'm Rep4®FinLit Bot, your financial literacy assistant. You can chat with me about anything financial related and I will respond with trusted information from our learning modules. The navigation bar you see above you can change your money mindset animal, reset the chat, and access our full screen chatbot!</div>
 			</div>
 		</div>
       	<!-- END messages -->
@@ -193,11 +193,6 @@
 	/* #region CSS reset — strips browser defaults that interfere with the chat UI */
 		*, *::before, *::after {
 			box-sizing: border-box;
-			margin: 0;
-			padding: 0;
-		}
-
-		body {
 			margin: 0;
 			padding: 0;
 		}
@@ -269,27 +264,11 @@
 			background-color: var(--purple-color);
 		}
 	
-		.circle {
-			height: 6px;
-			width: 6px;
-			border-radius: 50%;
-			background-color: var(--blue-color);
-			transition: background-color 0.5s ease;
-		}
-		#unopened-chat-icon:hover .circle{
-			background-color: var(--purple-color);
-			animation: moveUpDown 0.65s ease-in-out;
-		}
 		#unopened-chat-icon img {
 			width: 100%;
 			height: 100%;
 		}
-	
-		@keyframes moveUpDown { /* for 3 dots animation on hover of closed chatbot */
-		0% { transform: translateY(0); }
-		50% { transform: translateY(-8px); }
-		100% { transform: translateY(0); }
-		}
+
 	/* ########################### */
   	/* #endregion unopened chatbot */	
 	/* ########################### */
@@ -429,11 +408,6 @@
 				transform: scale(1.1);
 			}
 
-			.animal.active {
-				transform: scale(1.2);
-				border: 3px solid var(--yellow-color);
-			}
-
 			#animal-select-container {
 				background: radial-gradient(circle, white 0%, var(--purple-color));
 				height: 100%;
@@ -463,14 +437,6 @@
 			#animal-description {
 				color: var(--brown-color);
 				text-align: center;
-			}
-
-			#back-button {
-				color: var(--purple-color);
-				border: solid 1px var(--purple-color);
-				font-weight: bold;
-				padding: 8px 10px;
-				border-radius: 8px;
 			}
 
 			#confirm-animal {
@@ -575,7 +541,6 @@
 				box-sizing: border-box;
 				border-top-left-radius: 15px;
 				border-bottom-right-radius: 15px;
-				border-bottom: solid var(brown-color) 1px;
 				
 				text-align: center;
 				text-justify: distribute;
@@ -625,6 +590,7 @@
 			}
 
 			#tools-button {
+				display: none;
 				background-color: var(--purple-color);
 			}
 		
@@ -744,8 +710,10 @@
 				background-color: color-mix(in srgb, white  100%, transparent); /* change percentage for opac bot message background */
 				margin-right: auto;  /* pushes tom the left */
 				border-bottom-left-radius: 1px;
+				padding: 0px 8px;
 
 				white-space: normal;
+				padding-top: 25px;
 			}  
 
 			.bot * {
@@ -754,19 +722,17 @@
 			}
 
 			.bot a {
-				color: var(--brown-color);
-				padding: 2px 6px;
-				background: color-mix(in srgb, var(--blue-color) 85%, black);
-				border-radius: 25px;
+				color: var(--purple-color);
 				font-size: 0.75em;
-
-				/* white-space: nowrap; */
+				font-weight: bold;
 			}
 
 			.bot a:hover {
-				text-decoration: none;
-				padding: 1px 5px;
-				border: solid white 1px;
+				text-decoration: underline;
+			}
+
+			.bot p:first-of-type {
+				margin-top: 0px;
 			}
 
 		/* #endregion messages */
@@ -814,13 +780,10 @@
 			margin: 0px 0px;
 			margin-bottom: 10px;
 			width: 97%;
-			align-content: flex-start;
-			justify-content: space-between;
-			
+
 			display: flex;
-			align-items: center;
 			justify-content: space-between;
-			
+			align-items: center;
 			padding-top: 1px;
 			gap: 5px;
 		}
@@ -908,6 +871,7 @@
 
 		#chat-animal {
 			width: 60px; height: 60px;
+			background-color: transparent;
 		}
 
 		/* #endregion input menu */
@@ -1010,29 +974,10 @@
 			pointer-events: none;
 			opacity: 0;
 		}  
-		
-		.module-link {
-			color: var(--brown-color);
-			padding: 2px 6px;
-			background: color-mix(in srgb, var(--blue-color) 85%, black);
-			border-radius: 25px;
-			white-space: nowrap;
-			font-size: 0.75em;
-		}
-	
-		.module-link:hover {
-			text-decoration: none;
-			background: color-mix(in srgb, var(--blue-color) 80%, black);
-		}
 	/* #endregion special classes */
 </style>
 
 <script>
-	 // Sleep function
-    function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
-	
 	// #####################
 	// ##### VARIABLES #####
 	// #####################
@@ -1045,7 +990,7 @@
 	// animal choice variables
 	const animals = document.getElementsByClassName("animal");
 	const animalChoice = document.getElementById("animal-choice");
-	const chosenAnimal = document.getElementById("chosen-animal")
+	const chatAnimal = document.getElementById("chat-animal");
 
 	// animal confirmation elements
 	const animalName = document.getElementById("animal-name");
@@ -1057,9 +1002,6 @@
 	//resize
 	const resize = document.getElementById("resize");
 
-	// tools
-	const toolsButton  = document.getElementById("tools-button");
-
 	// chat input/messages
 	const chatInput = document.getElementById("chat-input");
 	const messages = document.getElementById("messages");
@@ -1069,8 +1011,6 @@
 	// start menu
 	const next = document.querySelector('.next-btn');
     const startmenu = document.querySelector('.start-screen');
-
-	const chatAnimal = document.getElementById("chat-animal");
 
 	// animal images and descriptions
     const animalDict = {
@@ -1102,7 +1042,7 @@
             'https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/88cf5fc1787e02c1e9fbd47d9a9228cc.png',
             'https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/0022d5a8a87ba2820f17e144b2922ced.png',
             'https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/8a047de6b866e8e9cfa095b604a747ea.png',
-            'https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/85abf182e81118808f49a08c82c5905d.png'
+            'https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/85abf182e81118808f49a08c82c5905d.png' // THIS IMAGE NO LONGER WORKS
             ],
         'Panda' : [
             'https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/28913e2dcb49252975a6f20c76341ed9.png',
@@ -1111,14 +1051,14 @@
             'https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/0a239690edc673c22ef2ee15678a8f25.png',
             'https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/661f04b5cd3759c96cc3029895c6a0f6.png'
             ],
-        'Poodle' : [
+        'Poodle' : [ // ONLY SOME POODLE EMOTIONS HAVE WHITE SQUARE BACKGROUND
             'https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/f3f3b8d63ca3eee73c0782abbe2f25c0.png',
             'https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/69faf25bfbff72936e9386d2898a74fd.png',
             'https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/05be73db556bba44395e96ba49a92df3.png',
             'https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/ca412298722376221e2e390efa346d44.png',
             'https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/bbdc3f01c77e5119391ba8454a925c3e.png'
             ],
-        'Rabbit' : [
+        'Rabbit' : [ // ALL RABBIT EMOTIONS HAVE WHITE SQUARE BACKGROUND
             'https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/0e085720420940b17bffd4a3f0419cc1.png',
             'https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/0ff4d334277b11b3176e2c79b4df49d9.png',
             'https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/0ff4d334277b11b3176e2c79b4df49d9.png',
@@ -1145,11 +1085,18 @@
         'Squirrel' : 'Focused on saving and security, squirrels might avoid taking necessary financial risks for growth.'
     };
 
-	// get four rows div and two rows div
-	const four = document.getElementById("animals-4rows")
+	// get 2 rows animal div
 	const two = document.getElementById("animals-2rows")
 
 
+	// warm up backend
+	fetch("https://finlit-chatbot-backend-ccbjbfhvefcxhzhd.centralus-01.azurewebsites.net/").catch(() => {});
+
+	 // Sleep function
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+	
 	animalSizing();
 	
 	// the IF statement determines whether to display the chatbot or not,
@@ -1157,14 +1104,15 @@
 
   	// checks to show or hide chatbot
   	if (window == window.top) { // Prevents previous issue of 2 chatbots appearing in modules
-      
-      const url = window.location.href
       if (true) { // change if statements to prevent chatbot on specific URLs in rep4FinLit (add this for if statement url.startsWith("https://www.rep4finlit.org"))
         checkQuizState();
         setInterval(checkQuizState, 1000); //check periodically because the url does not change in the course when user enters the quiz
       }
     }
 
+	// currently selected money mindset animal (set by changeAnimal)
+	let animal;
+	
 	// set random animal REPLACE with grabbing user's animal if possible
 	let randomAnimal = Object.keys(descriptions)[Math.floor(Math.random() * (7 - 0 + 1)) + 0];
 	changeAnimal(randomAnimal);
@@ -1228,8 +1176,6 @@
 		// starting size and offsets of the bot pane window
         const startWidth = chatContainer.offsetWidth;
         const startHeight = chatContainer.offsetHeight;
-        const startLeft = chatContainer.offsetLeft;
-        const startTop = chatContainer.offsetTop;
 
 		const drag = (e) => {
 			const dx = e.pageX - startX;
@@ -1244,8 +1190,6 @@
 
 			chatContainer.style.width = newWidth + 'px'; 
 			chatContainer.style.height = newHeight + 'px';
-
-			console.log(newWidth, newHeight)
 
 			animalSizing();
 		};
@@ -1352,7 +1296,7 @@
 
 	function changeAnimal(selectedAnimal) {
 		// sets animal that was chosen to the animal display in the chat menu
-		chosenAnimal.src = animalDict[selectedAnimal][0];
+		chatAnimal.src = animalDict[selectedAnimal][0];
 		// Change closed animal pfp
 		unopenedChat.querySelector("img").src = animalDict[selectedAnimal][0];
 		// Change base description animal to current animal
@@ -1361,26 +1305,25 @@
 		animalDescription.textContent = descriptions[selectedAnimal];
 		// Change animal description for confirm menu
 		animalName.textContent = selectedAnimal;
-
-		chatAnimal.src = animalDict[selectedAnimal][0];
+		
 		// setting custom placeholder input box based on animal
 		if (selectedAnimal == "Squirrel") {
-			chatInput.placeholder = "now where did I bury that..."
+			chatInput.placeholder = "now where did I bury those nuts..."
 			animal = "Squirrel"
 		} else if (selectedAnimal == "Rabbit") {
 			chatInput.placeholder = "lets go down a rabbit hole..."
 			animal = "Rabbit"
 		} else if (selectedAnimal == "Octopus") {
-			chatInput.placeholder = "where'd my 8th arm go..."
+			chatInput.placeholder = "where'd my 8th arm go?"
 			animal = "Octopus"
 		} else if (selectedAnimal == "Panda") {
-			chatInput.placeholder = "save today, feast bamboo tomorrow..."
+			chatInput.placeholder = "save today, feast bamboo tomorrow!"
 			animal = "Panda"
 		} else if (selectedAnimal == "Armadillo") {
-			chatInput.placeholder = "no one can see me in my shell..."
+			chatInput.placeholder = "no one can see me in my shell"
 			animal = "Armadillo"
 		} else if (selectedAnimal == "Poodle") {
-			chatInput.placeholder = "where did that squirrel go..."
+			chatInput.placeholder = "where did that squirrel go!?"
 			animal = "Poodle"
 		} else if (selectedAnimal == "Owl") {
 			chatInput.placeholder = "wise owls give a hoot about their finances!"
@@ -1423,7 +1366,7 @@
 		ChatScreenToggle()
     }
   
-	const loadingMessage = `Thinking <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none" /><circle cx="4" cy="12" r="3" fill="currentColor"><animate id="SVG9IgbRbsl" attributeName="r" begin="0;SVGFUNpCWdG.end-0.25s" dur="0.75s" values="3;.2;3" /></circle><circle cx="12" cy="12" r="3" fill="currentColor"><animate attributeName="r" begin="SVG9IgbRbsl.end-0.6s" dur="0.75s" values="3;.2;3" /></circle><circle cx="20" cy="12" r="3" fill="currentColor"><animate id="SVGFUNpCWdG" attributeName="r" begin="SVG9IgbRbsl.end-0.45s" dur="0.75s" values="3;.2;3" />`;
+	const loadingMessage = `<p style="padding-bottom: 4px;">Thinking <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none" /><circle cx="4" cy="12" r="3" fill="currentColor"><animate id="SVG9IgbRbsl" attributeName="r" begin="0;SVGFUNpCWdG.end-0.25s" dur="0.75s" values="3;.2;3" /></circle><circle cx="12" cy="12" r="3" fill="currentColor"><animate attributeName="r" begin="SVG9IgbRbsl.end-0.6s" dur="0.75s" values="3;.2;3" /></circle><circle cx="20" cy="12" r="3" fill="currentColor"><animate id="SVGFUNpCWdG" attributeName="r" begin="SVG9IgbRbsl.end-0.45s" dur="0.75s" values="3;.2;3" /></p>`;
 
 	// creates visual for bot or user message
   	function createMessage(text, sender, updateBubble=null) { 
@@ -1438,18 +1381,28 @@
 				bubble.style.position = "relative";
 
 				// get random animal expression
-				chosenAnimal.src = animalDict[animal][Math.floor(Math.random() * 4) + 1];
+				chatAnimal.src = animalDict[animal][Math.floor(Math.random() * 4) + 1];
 
 				// add bubble to messages container
 				messages.appendChild(bubble)
 				return bubble;
-			} else {
-				let i = 0;
-          		text = text.split(' ')
-				// interval calls one word at a time until the whole text is shown
-        		let interval = setInterval(() => { i=typeWriter(text, updateBubble, i, interval, () => {
-        			chosenAnimal.src = animalDict[animal][0];
-    			}); }, 75); //adjust number for speed at which text appears
+			} else { // THIS ELSE IS PURELY FOR DEVELOPMENT
+				// to activate uncomment the MOCK BOT RESPONSE and comment the runFetch()
+				const bubble = updateBubble || document.createElement("div")
+				if (!updateBubble) {
+					bubble.classList.add("message", sender)
+					messages.appendChild(bubble)
+				}
+				let words = 0;
+				const typeInterval = setInterval(() => {
+					words++;
+					bubble.innerHTML = `<img src="${animalDict[animal][0]}" style="position:absolute; top:-15px; left:-15px; width:40px; height:auto;">${marked.parse(text.split(' ').slice(0, words).join(' '))}` + ' █'
+					if (words >= text.split(' ').length) {
+						bubble.innerHTML = `<img src="${animalDict[animal][0]}" style="position:absolute; top:-15px; left:-15px; width:40px; height:auto;">${marked.parse(text)}`
+						clearInterval(typeInterval)
+					}
+				}, 90)
+				bubble.innerHTML = `<img src="${animalDict[animal][0]}" style="position:absolute; top:-15px; left:-15px; width:40px; height:auto;">${marked.parse(text)}`;
 			}
         } else { // user response no animation needed
 			const bubble = document.createElement("div")
@@ -1488,7 +1441,6 @@
   	function showScrollBottomButton() {
 		// if user is 400+px above from bottom display button
   		const atBottom = messagesContainer.scrollTop + messagesContainer.clientHeight >= messagesContainer.scrollHeight - 400;
-		console.log(atBottom);
 
         	if (atBottom && !isHidden) { // hide button
               	scrollToBottomButton.style.opacity = "0";
@@ -1545,7 +1497,7 @@
 				let fetchDone = false; // boolean to determine when token streaming is done
 
 				// inline the image directly in the bubble's HTML
-				bubble.innerHTML = `<img src="${animalDict[animal][0]}" style="position:absolute; top:-15px; left:-15px; width:30px; height:auto;">${loadingMessage}`;
+				bubble.innerHTML = `<img src="${animalDict[animal][0]}" style="position:absolute; top:-15px; left:-15px; width:40px; height:auto;">${loadingMessage}`;
 
 				// interval displays words one-at-a-time so the user sees a typewriter effect
 				// runs independently of the fetch so streaming can happen at full speed in the background
@@ -1555,16 +1507,17 @@
 					const words = chunkedResponse.split(" ");
 					if (displayedWordCount < words.length) {
 						displayedWordCount++;
-						bubble.innerHTML = `<img src="${animalDict[animal][0]}" style="position:absolute;top:-15px;left:-15px;width:30px;height:auto;">${marked.parse(words.slice(0, displayedWordCount).join(" ") + ' █')}`;
+						bubble.innerHTML = `<img src="${animalDict[animal][0]}" style="position:absolute;top:-15px;left:-15px;width:40px;height:auto;">${marked.parse(words.slice(0, displayedWordCount).join(" ") + ' █')}`;
 						showScrollBottomButton();
 					}
 					// only clear interval when fetch is done AND all words have been shown
 					if (fetchDone && displayedWordCount >= words.length) {
 						clearInterval(wordInterval);
-						bubble.innerHTML = `<img src="${animalDict[animal][0]}" style="position:absolute;top:-15px;left:-15px;width:30px;height:auto;">${marked.parse(chunkedResponse)}`;
+						bubble.innerHTML = `<img src="${animalDict[animal][0]}" style="position:absolute;top:-15px;left:-15px;width:40px;height:auto;">${marked.parse(chunkedResponse)}`;
 						showScrollBottomButton();
+						chatAnimal.src = animalDict[animal][0];
 					}
-				}, 65); // 65ms interval between words
+				}, 90); // 65ms interval between words
 
 				async function runFetch () {
 					chunkedResponse = "";
@@ -1614,10 +1567,10 @@
 					}
 				}
 
-				runFetch();
+				// runFetch();
 
               	// MOCK BOT RESPONSE for development without utilizing API tokens. to use mock response comment fetch and uncomment below
-				// createMessage(marked.parse(`## Monthly Budget Overview\n\nHere is a summary of your **financial health** for this month.\n\n### Income\n\n- **Primary salary**: $4,500\n- *Freelance work*: $800\n- **Dividends**: $120\n\n### Expenses\n\n- **Rent**: $1,200\n- Groceries: $350\n- **Utilities**: $90\n- Subscriptions: $45\n- *Dining out*: $200\n\n### Key Takeaways\n\nYour **total income** this month is $5,420 and your *total expenses* are $1,885, leaving you with a **net surplus of $3,535**.\n\n- You are spending **18% more** on dining than last month\n- Your *emergency fund* is currently at 3 months of expenses\n- **Investment contributions** are on track\n\n### Recommendations\n\n1. **Reduce dining expenses** by setting a $150 monthly cap\n2. Increase your *Roth IRA contribution* by $100 this month\n3. **Review subscriptions** — you may have unused services\n4. Consider moving surplus into a *high-yield savings account*\n\n> Your debt-to-income ratio is currently **12%**, which is considered healthy.\n\n[test](https://www.youtube.com/)`), "bot", bubble)
+				createMessage(marked.parse(`MOCK MESSAGE:\n ## Monthly Budget Overview\n\nHere is a summary of your **financial health** for this month.\n\n### Income\n\n- **Primary salary**: $4,500\n- *Freelance work*: $800\n- **Dividends**: $120\n\n### Expenses\n\n- **Rent**: $1,200\n- Groceries: $350\n- **Utilities**: $90\n- Subscriptions: $45\n- *Dining out*: $200\n\n### Key Takeaways\n\nYour **total income** this month is $5,420 and your *total expenses* are $1,885, leaving you with a **net surplus of $3,535**.\n\n- You are spending **18% more** on dining than last month\n- Your *emergency fund* is currently at 3 months of expenses\n- **Investment contributions** are on track\n\n### Recommendations\n\n1. **Reduce dining expenses** by setting a $150 monthly cap\n2. Increase your *Roth IRA contribution* by $100 this month\n3. **Review subscriptions** — you may have unused services\n4. Consider moving surplus into a *high-yield savings account*\n\n> Your debt-to-income ratio is currently **12%**, which is considered healthy.\n\n[test](https://www.google.com/)`), "bot", bubble)
 				
             }
     	}
@@ -1698,17 +1651,7 @@
 			resize.style.display = "none"
 			chatContainer.style.width = "";
 			chatContainer.style.height = "";
-
-			// if in mobile mode and width+60 is bigger than height make 2 rows GUI show
-			if (window.innerWidth + 60 >= window.innerHeight) {
-				// swap to 2 rows
-				// four.style.display = "none"
-				two.style.display = "flex"
-			} else {
-				// swap to 4 rows
-				// four.style.display = "flex"
-				two.style.display = "flex"
-			}
+			two.style.display = "flex"
 		}
 	}
 	// animal icon rotation

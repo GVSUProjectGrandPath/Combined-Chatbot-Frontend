@@ -1,15 +1,5 @@
 - Eventually get new faces for every single animal (CONTACT GRAPHIC DESIGN)
 
-- add the warmup chat
-
-- when user expands height and shortens width in animal change menu make animals display as 4 rows (maybe add this maybe not)
-
-- BUG: when token streaming was implemented animal emotions broke. it triggers an animal emotion but does not revert back to the original image
-
-- restyle links for chat messages (they were previously styled for blue background now it looks bad with a white background)
-
-- BUG: scroll down button seems to have broken (button that would appear when user is scrolled up a lot and when clicked scrolls down)
-
 FINISHED:
 - On enter, choose a random animal then select it with the change animal function
 - change to linear gradient on message menu
@@ -23,3 +13,8 @@ FINISHED:
 - Change animal function (changes pfps, the selected animal in the change animal screen, other stuff)
 - Have the main screen animal icon be used better (position it better)
 - BUG: logo on top left in chatbot looks bad for some reason the brown text is smaller this is not an issue when looking at it localy something with learnworlds is the issue
+- BUG: scroll down button seems to have broken (button that would appear when user is scrolled up a lot and when clicked scrolls down)
+- restyle links for chat messages (they were previously styled for blue background now it looks bad with a white background)
+- add bottom padding to loading message
+- BUG: when token streaming was implemented animal emotions broke. it triggers an animal emotion but does not revert back to the original image
+- add the warmup chat
