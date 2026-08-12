@@ -1,5 +1,3 @@
-- Have the main screen animal icon be used better (position it better)
-
 - Eventually get new faces for every single animal (CONTACT GRAPHIC DESIGN)
 
 - add the warmup chat
@@ -12,8 +10,6 @@
 
 - BUG: scroll down button seems to have broken (button that would appear when user is scrolled up a lot and when clicked scrolls down)
 
-- BUG: logo on top left in chatbot looks bad for some reason the brown text is smaller this is not an issue when looking at it localy something with learnworlds is the issue
-
 FINISHED:
 - On enter, choose a random animal then select it with the change animal function
 - change to linear gradient on message menu
@@ -25,3 +21,5 @@ FINISHED:
 - Change redo personality menu (should have no confirm menu)
 - have the refresh chat screen buttons and text be able to scale 
 - Change animal function (changes pfps, the selected animal in the change animal screen, other stuff)
+- Have the main screen animal icon be used better (position it better)
+- BUG: logo on top left in chatbot looks bad for some reason the brown text is smaller this is not an issue when looking at it localy something with learnworlds is the issue
