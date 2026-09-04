@@ -9,7 +9,7 @@
 
 <!-- Corner Chatbot -->
 
-<!-- Everything in the body tag is on LearnWorlds the html, head, and other tags are just to be able 
+<!-- Everything in the body tag is on LearnWorlds the html, head, and other tags are just to be able
  to work at the GUI locally instead of only on LearnWorlds -->
 
 <!-- IMPORTS -->
@@ -28,7 +28,7 @@
 	<!-- Standard Rep4FinLit Poppins font -->
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 <!-- END IMPORTS -->
- 
+
 <!-- unopened-chat-icon-->
 <button id="unopened-chat-icon" class="hidden" onClick="chatBot()">
 	<img src="https://lwfiles.mycourse.app/6759d5489b4fa1f235381f70-public/fc03ee57461416c10e083865fcc3e6f4.png">
@@ -39,7 +39,7 @@
 <!-- opened chat -->
 <div id="chat-container" class="hidden">
     <div id="resize">⠿</div>
-  	<!-- animal choice --> 
+  	<!-- animal choice -->
   	<div id="animal-choice" class="hidden">
       	<div id="question-container">
           	<div style="display: flex; flex-direction: row; width: 100%; padding: 0px 10px; align-items: center;">
@@ -96,16 +96,16 @@
 		</div>
     </div>
 	<!-- END pop up screens -->
- 
+
 	<!-- Chat interface -->
 	<div id="chat-content">
-		
+
      	<!-- top bar -->
   		<div id="top-bar">
           	<div class="logo">
             	<h1>FinLit&nbsp;</h1><h2>Rep4® Bot</h2>
           	</div>
-          
+
           	<div class="button-row" style="flex: 1; justify-content: flex-end">
 				<!-- 4 buttons in top bar
                     1. change-animal - change animal personality
@@ -120,7 +120,7 @@
             </div>
     	</div>
     	<!-- END top bar -->
-      
+
 
       	<!-- messages -->
 		<div id="messages-container">
@@ -130,10 +130,10 @@
 			</div>
 		</div>
       	<!-- END messages -->
-		
+
 		<!-- button that appears when the user is scrolled up in the chat history when clicked scrolls all the way down -->
       	<button id="scroll-to-bottom-button" onClick="scrollToBottom()"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none" /><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 19V4M6.343 14L12 19.657L17.657 14" /></svg></button>
-        
+
       	<!-- bottom container -->
     	<div id="bottom-container">
 			<div id="input-container">
@@ -173,7 +173,7 @@
 			cursor: pointer;
 			will-change: transform;
 			backface-visibility: hidden;
-		} 
+		}
 
 		a {
 			text-decoration: none;
@@ -206,75 +206,75 @@
 		#unopened-chat-icon {
 			position: fixed;
 			width: 80px; height: 80px; bottom: 20px; right: 20px; z-index: 20;
-		
+
 			border-radius: 50%;
 			background-color: var(--blue-color);
 			display: flex;
 			align-items: center;
 			justify-content: center;
-		
+
 			transition: opacity 350ms ease, background-color 0.5s ease;
 		}
-	
+
 		#unopened-chat-icon:hover {
 			cursor: pointer;
 			background-color: var(--purple-color);
 		}
-	
+
 		#unopened-chat-icon img {
 			width: 100%;
 			height: 100%;
 		}
 
 	/* ########################### */
-  	/* #endregion unopened chatbot */	
+  	/* #endregion unopened chatbot */
 	/* ########################### */
-  
-  	/* ###################### */ 
-	/* #region opened chatbot */  
-  	/* ###################### */ 
+
+  	/* ###################### */
+	/* #region opened chatbot */
+  	/* ###################### */
 
 		#chat-container {
 			container-type: inline-size;
 			font-size: 16px;
-			bottom: 20px; right: 20px; 
-			width: clamp(400px, 30vw, 500px); 
+			bottom: 20px; right: 20px;
+			width: clamp(400px, 30vw, 500px);
 			height: clamp(600px, 70vh, 700px);
 
 			display: flex;
 			flex-direction: column;
-			
+
 			z-index: 20;
 			border-radius: 20px;
 			/* border: 3px solid var(--blue-color); */
-		
+
 			transition: opacity 350ms ease;
 			position: fixed;
 			overflow: visible;
 		}
 
 		.logo {
-			display: flex; 
-			flex-direction: row; 
+			display: flex;
+			flex-direction: row;
 			justify-content: center;
 			align-items: center;
-			white-space: nowrap; 
+			white-space: nowrap;
 
             margin-left: 28px;
 		}
 
 		.logo h1 {
-			color: var(--brown-color); 
+			color: var(--brown-color);
 			font-size: 0.9em;
 			font-weight: bold;
 		}
 
 		.logo h2 {
-			color: var(--purple-color); 
+			color: var(--purple-color);
 			font-size: 0.9em;
 			font-weight: bold;
 		}
-	
+
 		/* #region animal choice */
 			#animal-choice {
 				position: relative;
@@ -292,7 +292,7 @@
 
 				transition: opacity 350ms ease;
 			}
-  
+
 			#question-container {
 				background-color: var(--yellow-color);
 				width: 100%;
@@ -303,7 +303,7 @@
               	flex-direction: column;
 
 				border-bottom: 1px solid var(--brown-color);
-              
+
         	    align-items: center;
 			}
 
@@ -319,15 +319,15 @@
 				font-weight: 700;
 				font-size: 1.5em;
 				line-height: 1;
-	
+
 				margin-top: 12px;
-	
+
 				background-color: rgb(0,0,0,0.1);
 				padding: 4px;
 				border-radius: 20px;
 				width: 90%;
 			}
-		
+
 			.animals {
 				position: relative;
 				display: flex;
@@ -351,13 +351,13 @@
 				width: 95%;
 				justify-content: center;
 			}
-		
+
 			.animal {
 				transition: transform 0.5s ease, opacity 0.5s ease;
 				will-change: transform;
 				min-width: 85px;
 			}
-		
+
 			.animal:hover {
 				cursor: pointer;
 				transform: scale(1.1);
@@ -411,7 +411,7 @@
 			width: 100%;
 			flex: 1;
 			min-height: 0;
-			
+
 			border-radius: 16px;
 			background-color: white;
           	background-image: linear-gradient(var(--teal-color) 0%, white);
@@ -420,19 +420,19 @@
 			outline: 3px  solid var(--blue-color);
 
 			overflow: hidden;
-			
+
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-		
+
 			transition: opacity 350ms ease;
-		
+
 			position: absolute;
 			top: 0; left: 0; right: 0; bottom: 0;
 		}
-	
-	
-		/* #region top bar  */	
+
+
+		/* #region top bar  */
 			#top-bar {
 				width: 100%; height: 60px;
 				background-color: var(--yellow-color);
@@ -441,7 +441,7 @@
 				padding: 10px 16px;
 				border-bottom: 1px solid var(--brown-color);
 				align-items: center;
-			
+
 				position: relative;
 			}
 
@@ -451,15 +451,15 @@
 				position: absolute;
 				height: 59px;
 				width: 40px;
-				
+
 				font-size: 250%;
 				color: var(--brown-color);
-				
+
 				background-color: var(--yellow-color);
 				box-sizing: border-box;
 				border-top-left-radius: 15px;
 				border-bottom-right-radius: 15px;
-				
+
 				text-align: center;
 				text-justify: distribute;
 				align-items: center;
@@ -470,13 +470,13 @@
                 top: 0px;
                 left: 0px;
 			}
-            
+
 			#resize:hover {
 				background-color: var(--purple-color);
 				color: var(--yellow-color);
 				cursor: grab;
 			}
-			
+
             .symbol {
                 width: 1.2em; height: 1.2em;
 
@@ -511,43 +511,43 @@
 				display: none;
 				background-color: var(--purple-color);
 			}
-		
+
             #reset-chat {
               	background-color: var(--blue-color);
             }
 
 			.close-chat {
 				width: 1.2em; height: 1.2em;
-			
+
 				color: var(--brown-color);
 				transition: color 0.5s ease, transform 0.5s ease;
 				will-change: transform;
 
 				font-size: 1.875em;
-			
+
 				background-color: rgba(0, 0, 0, 0.2);
 			}
-			
+
 			.close-chat:hover {
 				color: var(--purple-color);
 			}
 			.return-chat {
 				width: 1.2em; height: 1.2em;
-			
+
 				color: var(--brown-color);
 				fill: var(--brown-color);
 				transition: color 0.5s ease, transform 0.5s ease, fill 0.5s ease;
 				will-change: transform;
 
 				font-size: 1.875em;
-			
+
 				background-color: rgba(0, 0, 0, 0.2);
 			}
 			.return-chat:hover {
 				color: var(--purple-color);
 				fill: var(--purple-color);
 			}
-		
+
 			.button-row {
 				display: flex;
 				flex-direction: row;
@@ -557,10 +557,10 @@
 				margin: 0;
 			}
 		/* #endregion top bar */
-		
-	
-		/* #region messages */	
-		#messages-container { 
+
+
+		/* #region messages */
+		#messages-container {
 		/* This primarily exists to make the scroll bar for messages isn't right next to the user messages */
 			overflow-y: auto;
 			height: 100%;
@@ -581,13 +581,13 @@
 			#messages {
 				width: 98%;
 				min-height: 0;
-			
+
 				display: flex;
 				flex-direction: column;
-				
+
 				padding-bottom: 150px;
 			}
-		
+
 
 			/* The 3 message classes
 				1. .message - applies to both bot and user messages sets font size, padding/margins, and other general formatting stuff
@@ -603,19 +603,19 @@
 
 				font-size: 1em;
 				word-wrap: break-word;
-			
+
 				border: 2px solid var(--brown-color);
 				color: var(--brown-color);
-			
+
 				line-height: 1.25;
 				animation: messageFadeIn 0.5s ease;
 			}
-		
+
 			@keyframes messageFadeIn {
 				from { opacity: 0; }
 				to { opacity: 1; }
 			}
-		
+
 			.user {
 				background-color: color-mix(in srgb, var(--blue-color)  100%, transparent); /* change percentage for opac user message background */
 				margin-left: auto;  /* pushes to the right */
@@ -632,7 +632,7 @@
 
 				white-space: normal;
 				padding-top: 25px;
-			}  
+			}
 
 			.bot * {
 				margin: revert;
@@ -654,45 +654,45 @@
 			}
 
 		/* #endregion messages */
-	
+
 		#scroll-to-bottom-button {
 			width: 1.5em; height: 1.5em;
 			background-color: var(--yellow-color);
           		border-radius: 50%;
 			outline: 2px solid var(--brown-color);
 			opacity: 0;
-          
+
 			font-size: 1.5em;
 			color: var(--brown-color);
-			
+
 			position: absolute;
 			bottom: 80px;
-			
+
 			transition: opacity 0.35s ease, filter 0.35s ease;
 
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			
+
 			z-index: 100;
 		}
-	
+
 		#scroll-to-bottom-button:hover {
 			cursor: pointer;
 			filter: brightness(0.95);
 		}
-		
+
 		#chosen-animal {
 			width: clamp(70px, 22%, 125px);
 			height: auto;
 			border-radius: 50%;
-			
+
 			position: absolute;
 			right: 8px;
 			bottom: 90px;
           	z-index: 1;
 		}
-	
+
 		/* #region input menu */
 		#bottom-container {
 			margin: 0px 0px;
@@ -713,7 +713,7 @@
 			border: 2px solid var(--brown-color);
 			background-color: white;
 			border-radius: 20px;
-			
+
 			transition: transform 0.5s ease, border 0.25s ease;
 			will-change: transform;
 
@@ -727,7 +727,7 @@
 		#input-container:focus-within {
 			border-color: var(--purple-color);
 		}
-		
+
 		#chat-input {
 			background-color: transparent;
 			border: none;
@@ -769,7 +769,7 @@
 			font-size: 1.5em;
 			color: var(--brown-color);
 			font-weight: 800;
-			
+
 			background-color: var(--yellow-color);
 			border: 2px solid var(--brown-color);
 			border-radius: 50%;
@@ -781,7 +781,7 @@
 
 			flex-shrink: 0;
 		}
-		
+
 		#send-button:hover {
 			cursor: pointer;
 			transform: scale(1.05);
@@ -793,10 +793,10 @@
 		}
 
 		/* #endregion input menu */
-  
-	/* ######################### */ 
-	/* #endregion opened chatbot */  
-  	/* ######################### */ 
+
+	/* ######################### */
+	/* #endregion opened chatbot */
+  	/* ######################### */
 
 	/* Refresh chat screen */
     .refresh-confirmation {
@@ -811,7 +811,7 @@
         justify-content: center;
 		text-align: center;
 		gap: 20px;
-		
+
         z-index: 2000;
 		top: 60px;
         width: 100%;
@@ -1013,11 +1013,16 @@
         'Squirrel' : 'now where did I bury those nuts...'
 	}
 
-
 	// ########################
 	// ##### RUN ON START #####
 	// ########################
-
+	function inIframe () {
+      try {
+        return window.self !== window.top;
+      } catch (e) {
+        return true;
+      }
+	}
 	// warm up backend
 	fetch("https://finlit-chatbot-backend-ccbjbfhvefcxhzhd.centralus-01.azurewebsites.net/").catch(() => {});
 
@@ -1025,20 +1030,20 @@
 	animalSizing();
 
   	// Prevents 2 chatbot showing on modules, and prevent chatbot during self-assessments
-  	if (window == window.top) {
+  	// if (window == window.top) {
     	checkQuizState();
         setInterval(checkQuizState, 1000); //check periodically because the url does not change in the course when user enters the quiz
-    }
+    // }
 
 	// initialize money mindest animal string variable
 	let animal;
-	
+
 	// set random animal REPLACE with grabbing user's animal if possible
 	let randomAnimal = Object.keys(descriptions)[Math.floor(Math.random() * (7 - 0 + 1)) + 0];
 	confirmAnimal.classList.add(randomAnimal)
 	changeAnimal(randomAnimal);
-	
-  
+
+
 	// #####################
   	// ##### FUNCTIONS #####
 	// #####################
@@ -1057,11 +1062,19 @@
 
 	function checkQuizState() {
           try {
+            // no duplicates
+            // if (inIframe()) {
+            //     if (document.getElementById("chat-container") && document.getElementById("unopened-chat-icon")) {
+            //         document.getElementById("chat-conatiner").remove();
+            //         document.getElementById("unopened-chat-icon").remove();
+            //     }
+            // }
+
             const iframe = document.getElementById('playerFrame')
 
             if (!iframe) { // if there is no iframe we are not in the courses so there is no reason to hide the bot in the first place
             	if (chatContainer.classList.contains("hidden")) {
-            		unopenedChat.classList.remove("hidden");
+                  unopenedChat.classList.remove("hidden");
               	}
               return;
             }
@@ -1078,13 +1091,15 @@
               unopenedChat.classList.add("hidden");
               chatContainer.classList.add("hidden");
             }
-          } catch (e) { 
-            console.log("Error occured when checking whether to hide or show bot (shows if not in quiz doesn't show in quiz)")
+
+            // delete duplicate if exits
+          } catch (e) {
+            console.log("Error occured when checking whether to hide or show bot (shows if not in quiz doesn't show in quiz)", e)
           }
     }
 
 	// open/close chatbot
-	function chatBot() { 
+	function chatBot() {
       	if (chatContainer.classList.contains("hidden")) { // open chat
     		unopenedChat.classList.add('hidden');
 			chatContainer.classList.remove('hidden');
@@ -1099,7 +1114,7 @@
 	resize.addEventListener('mousedown', (mouseEvent) => {
 		mouseEvent.preventDefault();
 		resize.style.cursor = "grabbing";
-		
+
 		// borders
 		let minWidth = chatContainer.style.minWidth ? parseInt(chatContainer.style.minWidth) : 360;
     	let minHeight = chatContainer.style.minHeight ? parseInt(chatContainer.style.minHeight) : 575;
@@ -1125,12 +1140,12 @@
 			newWidth = Math.min(Math.max(newWidth, minWidth), maxWidth);
 			newHeight = Math.min(Math.max(newHeight, minHeight), maxHeight);
 
-			chatContainer.style.width = newWidth + 'px'; 
+			chatContainer.style.width = newWidth + 'px';
 			chatContainer.style.height = newHeight + 'px';
 
 			animalSizing();
 		};
-		
+
 		const stopDrag = () => {
 			resize.style.cursor = "grab";
             window.removeEventListener('mousemove', drag);
@@ -1173,7 +1188,7 @@
 				animalDescription.style.fontSize = Math.max((Math.min(width, height)/5.7), 18) + 'px'
 				confirmAnimal.style.fontSize = Math.max(Math.min(width, height)/5.5, 18) + 'px'
 			}
-		
+
 		// animal photos sizing in animal menu
 			if (width <= height) {
 				document.querySelectorAll(".animal").forEach(animal => {
@@ -1210,8 +1225,8 @@
 	}
 
 	// NEED TO BE CHANGED TO FUNCTION WITH AN ANIMAL STRING NOT THE ELEMENT OBJECT
-  	function confirmAnimalSelection () { 
-      
+  	function confirmAnimalSelection () {
+
 		// function was called from user selecting a money mindset animal
       	if (chatContent.classList.contains("hidden")) {
 			changeAnimal(confirmAnimal.classList[0]);
@@ -1222,7 +1237,7 @@
 			chatInput.focus()
         } else { // function was called by user resetting chat no need to set animal as user will be chosing a new animal
 			for (i=0; i < animals.length; i++) animals[i].classList.toggle("hidden");
-			
+
           	chatContent.classList.add('hidden')
         	animalChoice.classList.remove('hidden')
 			chatInput.focus()
@@ -1240,12 +1255,12 @@
 		animalDescription.textContent = descriptions[selectedAnimal];
 		// Change animal description for confirm menu
 		animalName.textContent = selectedAnimal;
-		
+
 		// setting custom placeholder input box based on animal and animal string variable
 		chatInput.placeholder = animalPlaceholder[selectedAnimal];
 		animal = selectedAnimal;
 	}
-  
+
 	// Opens/Closes the refresh screen
 	function ChatScreenToggle() {
 		refreshScreen.classList.toggle('active');
@@ -1255,7 +1270,7 @@
   	function resetChat() {
 		// show animal GUI hide chat interface
 		//confirmAnimalSelection(document.getElementById("default-animal"));
-		
+
 		// set new sessionId
 		sessionId = crypto.randomUUID();
 		sessionStorage.setItem("sessionId", sessionId);
@@ -1271,16 +1286,16 @@
 				elements[i].remove();
 			}
 		}
-		
+
 		// if scroll button was showing hide it now as there will only be the welcome message
 		showScrollBottomButton()
 		ChatScreenToggle()
     }
-  
+
 	const loadingMessage = `<p style="padding-bottom: 4px;">Thinking <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none" /><circle cx="4" cy="12" r="3" fill="currentColor"><animate id="SVG9IgbRbsl" attributeName="r" begin="0;SVGFUNpCWdG.end-0.25s" dur="0.75s" values="3;.2;3" /></circle><circle cx="12" cy="12" r="3" fill="currentColor"><animate attributeName="r" begin="SVG9IgbRbsl.end-0.6s" dur="0.75s" values="3;.2;3" /></circle><circle cx="20" cy="12" r="3" fill="currentColor"><animate id="SVGFUNpCWdG" attributeName="r" begin="SVG9IgbRbsl.end-0.45s" dur="0.75s" values="3;.2;3" /></p>`;
 
 	// creates visual for bot or user message
-  	function createMessage(text, sender, updateBubble=null) { 
+  	function createMessage(text, sender, updateBubble=null) {
 
 		// create a new message a "bubble" and add message and the sender (bot or user specific styles) styling class for styling
 
@@ -1347,7 +1362,7 @@
 	let isHidden = true; // tracking variable for if the scroll down button is revealed or not
 	// calls showScrollBottomButton whenever user scroll in order to accurately display the button when the user is scrolled high up
 	messagesContainer.addEventListener('scroll', showScrollBottomButton)
-	
+
 	// whether or not to show scroll-to-bottom-button is called often when height of messages changes
   	function showScrollBottomButton() {
 		// if user is 400+px above from bottom display button
@@ -1363,9 +1378,9 @@
               	scrollToBottomButton.style.pointerEvents = "auto";
           	}
 	}
-  
+
 	// scrolls to bottom of messages when scroll-to-bottom-button is pressed
-  	function scrollToBottom () { 
+  	function scrollToBottom () {
     	messagesContainer.scrollTo({ top: messages.scrollHeight, behavior: "smooth" })
     }
 
@@ -1376,31 +1391,31 @@
     	sessionId = crypto.randomUUID();
     	sessionStorage.setItem("sessionId", sessionId);
 	}
-	
+
 	// on any key typed consider call sendMessage() will only send if key was "enter"
-	chatInput.addEventListener("keydown", sendMessage) 
+	chatInput.addEventListener("keydown", sendMessage)
 
 	// message sent visually and to backend, backend returns LLM response, bot response created visually
-  	function sendMessage (event) { 
+  	function sendMessage (event) {
 
         if (event.key === "Enter" || event.type == "click") { // checks to make sure user either hit enter or hit send button
           	if (event.key === "Enter" && event.shiftKey) return; // allows user to type a newline with "enter" + "shift"
-			
+
 			// get text from input box
             const text = chatInput.value.trim()
-            
+
             if (text) { // don't send message if its empty
 
                 createMessage(text, "user") // creates user's message visually
-				
+
 				// Reset input box sizes and text
                 chatInput.value = "";
 				updateScrollButtonPosition();
 
-				// prevents an error that occured with after sending a message 
+				// prevents an error that occured with after sending a message
 				// input box would empty then have a new line from the enter that was used to send a message
-				if (event.key === "Enter") event.preventDefault(); 
-				
+				if (event.key === "Enter") event.preventDefault();
+
 				// set variables
 				const bubble = createMessage(loadingMessage, "bot") // bot's message element
 				let chunkedResponse = ""; // words from bot message as they stream in (not what displays visually)
@@ -1447,7 +1462,7 @@
 
 					let buffer = ""; // holds partial line leftover between reads (SSE lines may split across chunks)
 
-					
+
 
 					while (true) {
 						const { value, done } = await reader.read();
@@ -1482,7 +1497,7 @@
 
               	// MOCK BOT RESPONSE for development without utilizing API tokens. to use mock response comment fetch and uncomment below
 				// createMessage(marked.parse(`MOCK MESSAGE:\n ## Monthly Budget Overview\n\nHere is a summary of your **financial health** for this month.\n\n### Income\n\n- **Primary salary**: $4,500\n- *Freelance work*: $800\n- **Dividends**: $120\n\n### Expenses\n\n- **Rent**: $1,200\n- Groceries: $350\n- **Utilities**: $90\n- Subscriptions: $45\n- *Dining out*: $200\n\n### Key Takeaways\n\nYour **total income** this month is $5,420 and your *total expenses* are $1,885, leaving you with a **net surplus of $3,535**.\n\n- You are spending **18% more** on dining than last month\n- Your *emergency fund* is currently at 3 months of expenses\n- **Investment contributions** are on track\n\n### Recommendations\n\n1. **Reduce dining expenses** by setting a $150 monthly cap\n2. Increase your *Roth IRA contribution* by $100 this month\n3. **Review subscriptions** — you may have unused services\n4. Consider moving surplus into a *high-yield savings account*\n\n> Your debt-to-income ratio is currently **12%**, which is considered healthy.\n\n[test](https://www.google.com/)`), "bot", bubble)
-				
+
             }
     	}
 	}
@@ -1495,7 +1510,7 @@
 <!-- sizing adjustments for mobile/small devices -->
 <!-- ########################################### -->
 
-<!-- This section is made up of mostly media queries with CSS 
+<!-- This section is made up of mostly media queries with CSS
  	 and some javascript to make the GUI dynamic to smaller sizes -->
 <style>
 	/* if screen size is really small (phones/small laptop/tablet) */
